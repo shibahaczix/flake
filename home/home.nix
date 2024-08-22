@@ -15,7 +15,6 @@
     ./packages.nix
     ./git.nix
     ./starship.nix # I also put fish there
-    ./greetd.nix
     ./gammastep.nix
     ./hyprland.nix
     ./fastfetch.nix
