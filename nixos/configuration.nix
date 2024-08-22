@@ -80,6 +80,7 @@
     ];
   };
 
+  # Issue with git on nixos-rebuild
   #security.doas = {
   #  enable = true;
   #  extraRules = [{
@@ -90,11 +91,25 @@
   #};
   #security.sudo.enable = false;
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/shiba/flake";
+  #programs.nh = {
+  #  enable = true;
+  #  clean.enable = true;
+  #  clean.extraArgs = "--keep-since 4d --keep 3";
+  #  flake = "/home/shiba/flake";
+  #};
+
+  system.autoUpgrade = {
+   enable = true;
+   dates = "*-*-* 04:00:00";
+   persistent = true;
+   allowReboot = true;
+  };
+
+  nix.gc = {
+   automatic = true;
+   persistent = false;
+   dates = "daily";
+   options = "--delete-older-than 7d";
   };
 
   stylix = {

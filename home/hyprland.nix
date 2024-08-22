@@ -46,6 +46,7 @@
         disable_hyprland_logo = true;
       };
       exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprctl setcursor Babita-Modern-Classic 24"
         "wl-paste --type text --watch cliphist store #Stores only text data"
         "wl-paste --type image --watch cliphist store #Stores only image data"
