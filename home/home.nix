@@ -12,6 +12,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.niri.homeModules.niri
     ./packages.nix
     ./git.nix
     ./starship.nix # I also put fish there
