@@ -19,7 +19,13 @@
         scale 1.0
       }
       binds {
-        Mod+Space { spawn "fuzzel"; }
+        t Super+Space { spawn "fuzzel"; }
+      }
+      window-rule {
+        geometry-corner-radius 12
+        clip-to-geometry true
+        draw-border-with-background false
+        opacity 0.0
       }
     '';
   };
