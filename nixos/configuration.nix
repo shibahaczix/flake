@@ -150,6 +150,8 @@
     pkgs.uutils-coreutils-noprefix
   ];
 
+  services.flatpak.enable = true; # PLEASE SPARE ME I NEED TO...
+
   system.stateVersion = "24.05";
 
 }
