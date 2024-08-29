@@ -13,7 +13,7 @@
     pkgs.nautilus
     pkgs.vesktop
     pkgs.obs-studio
-    pkgs.hyprpicker
+    pkgs.swww
     pkgs.gimp
     pkgs.remmina
     pkgs.blockbench

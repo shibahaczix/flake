@@ -17,7 +17,6 @@
     ./git.nix
     ./starship.nix # I also put fish there
     ./gammastep.nix
-    ./hyprland.nix
     ./niri.nix
     ./fastfetch.nix
     ./fuzzel.nix
