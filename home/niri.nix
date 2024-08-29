@@ -23,6 +23,11 @@
         Mod+Return { spawn "kitty"; }
         Mod+C { screenshot; }
         Mod+Q { close-window; }
+        Mod+F { maximize-column; }
+        Mod+Minus { set-column-width "-10%"; }
+        Mod+Equal { set-column-width "+10%"; }
+        Mod+Shift+Minus { set-column-width "-1"; }
+        Mod+Shift+Equal { set-column-width "+1"; }
         Mod+1 { focus-workspace 1; }
         Mod+2 { focus-workspace 2; }
         Mod+3 { focus-workspace 3; }
@@ -43,6 +48,7 @@
         Mod+Shift+9 { move-column-to-workspace 9; }
       }
       window-rule {
+        default-column-width { proportion 0.75; }
         min-width 100
         max-width 1920
         min-height 300
