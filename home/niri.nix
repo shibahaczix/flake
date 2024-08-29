@@ -47,6 +47,7 @@
         Mod+Shift+8 { move-column-to-workspace 8; }
         Mod+Shift+9 { move-column-to-workspace 9; }
       }
+      prefer-no-csd
       window-rule {
         default-column-width { proportion 0.75; }
         min-width 100

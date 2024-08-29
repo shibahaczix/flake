@@ -17,5 +17,6 @@
     pkgs.gimp
     pkgs.remmina
     pkgs.blockbench
+    pkgs.godot_4
   ];
 }
