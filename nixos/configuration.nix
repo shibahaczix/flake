@@ -117,11 +117,15 @@
     image = /home/shiba/flake/nixos/wallpaper.jpg;
   };
 
-  xdg.portal.config = {
-    common = {
-      default = [
-        "gtk"
-      ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+      };
     };
   };
 
@@ -149,8 +153,6 @@
   environment.systemPackages = [
     pkgs.uutils-coreutils-noprefix
   ];
-
-  services.flatpak.enable = true; # PLEASE SPARE ME I NEED TO...
 
   system.stateVersion = "24.05";
 
