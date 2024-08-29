@@ -24,7 +24,6 @@
     ./stylix.nix # Automatic home-manager module detection
     ./eww.nix
     ./nixvim.nix
-    ./flatpak.nix # I HATE THIS I HATE THIS I HATE THIS I HATE THIS I HATE THIS I HATE THIS I HATE THIS I HATE THIS I HATE THIS   
   ];
 
   # Symlink example
