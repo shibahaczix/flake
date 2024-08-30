@@ -1,22 +1,23 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.mission-center
-    pkgs.fastfetch
-    pkgs.pamixer
-    pkgs.floorp
-    pkgs.wl-clipboard
-    pkgs.cliphist
-    pkgs.grim
-    pkgs.slurp
-    pkgs.nautilus
-    pkgs.vesktop
-    pkgs.obs-studio
-    pkgs.swww
-    pkgs.gimp
-    pkgs.remmina
-    pkgs.blockbench
-    pkgs.godot_4
+  home.packages = with pkgs; [
+    mission-center
+    fastfetch
+    pamixer
+    floorp
+    wl-clipboard
+    cliphist
+    grim
+    slurp
+    nautilus
+    vesktop
+    obs-studio
+    swww
+    gimp
+    remmina
+    blockbench
+    godot_4
+    xwayland
   ];
 }

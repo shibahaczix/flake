@@ -7,7 +7,7 @@
       enable_audio_bell = false;
       shell = ''fish'';
       confirm_os_window_close = 0;
-      font_family = ''JetBrainsMono NF'';
+      font_family = ''JetBrainsMono'';
       bold_font = ''auto'';
       italic_font = ''auto'';
       bold_italic_font = ''auto'';
