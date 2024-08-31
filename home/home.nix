@@ -15,7 +15,7 @@
     inputs.niri.homeModules.niri
     ./packages.nix
     ./git.nix
-    ./starship.nix # I also put fish there
+    ./shell.nix
     ./gammastep.nix
     ./niri.nix
     ./fastfetch.nix

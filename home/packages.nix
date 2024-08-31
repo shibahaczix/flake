@@ -18,6 +18,7 @@
     remmina
     blockbench
     godot_4
-    xwayland
+    xwayland-run
+    baobab
   ];
 }

@@ -119,11 +119,11 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
     config = {
       common = {
         default = [
-          "gtk"
+          "wlr"
         ];
       };
     };

@@ -1,6 +1,10 @@
 { pkgs, config, ... }:
 
 {
+  home.shellAliases = {
+    "fs" = "fastfetch";
+    "vim" = "nvim";
+  }
   programs.fish = {
     enable = true;
     interactiveShellInit = ''

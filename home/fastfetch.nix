@@ -7,8 +7,8 @@
       logo = {
         type = "kitty-direct";
         source = "/home/shiba/flake/home/fastfetch/image.png";
-	width = 36;
-	height = 16;
+	width = 20; #36
+	height = 9; #16
       };
 	modules = [
 	"title"
