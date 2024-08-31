@@ -6,8 +6,6 @@
     fastfetch
     pamixer
     floorp
-    wl-clipboard
-    cliphist
     grim
     slurp
     nautilus

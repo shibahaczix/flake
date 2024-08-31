@@ -20,6 +20,7 @@
     ./niri.nix
     ./fastfetch.nix
     ./fuzzel.nix
+    ./cliphist.nix
     ./kitty.nix
     ./stylix.nix # Automatic home-manager module detection
     ./eww.nix
