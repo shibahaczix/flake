@@ -2,9 +2,15 @@
 
 {
   home.shellAliases = {
-    "fs" = "fastfetch";
-    "vim" = "nvim";
-  }
+    g = "git";
+    fs = "fastfetch";
+    vim = "nvim";
+  };
+
+  programs.bash = {
+    enable = true;
+  };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
