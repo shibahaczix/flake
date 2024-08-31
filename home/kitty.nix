@@ -35,5 +35,9 @@
       selection_foreground = ''#212733'';
       background_opacity = ''0.0'';
     };
+    keybindings = {
+      "ctrl+c" = "copy_to_clipboard";
+      "ctrl+v" = "paste_from_clipboard";
+    };
   };
 }
