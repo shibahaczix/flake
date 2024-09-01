@@ -36,8 +36,9 @@
       background_opacity = ''0.0'';
     };
     keybindings = {
-      "ctrl+c" = "copy_to_clipboard";
-      "ctrl+v" = "paste_from_clipboard";
+      "ctrl+shift+c" = "copy_to_clipboard";
+      "ctrl+shift+v" = "paste_from_clipboard";
+      "ctrl+x" = "clear_terminal scroll active";
     };
   };
 }

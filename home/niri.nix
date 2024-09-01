@@ -3,18 +3,9 @@
 {
   programs.niri = {
     enable = true;
-    #settings = {
-    #  outputs."HDMI-A-1".scale = 2.0;
-    #  window-rule = {
-    #    geometry-corner-radius = 12;
-    #    clip-to-geometry = true;
-    #  };
-    #  binds = {
-    #    "Mod+D".action.spawn = "fuzzel";
-    #    "Mod+1".action.focus-workspace = 1;
-    #  };
-    #};
+    #settings = {}; switch to it in the future
     config = ''
+      spawn-at-startup "swww-daemon && swww img ~/flake/home/wallpaper.png"
       output "HDMI-A-1" {
         scale 1.0
       }

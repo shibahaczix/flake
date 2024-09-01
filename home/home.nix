@@ -18,6 +18,10 @@
     ./shell.nix
     ./gammastep.nix
     ./niri.nix
+    # --- --- --- delete
+    ./kde.nix
+    ./flatpak.nix
+    # --- --- --- delete
     ./fastfetch.nix
     ./fuzzel.nix
     ./cliphist.nix
@@ -37,4 +41,3 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }
-
