@@ -18,10 +18,6 @@
     ./shell.nix
     ./gammastep.nix
     ./niri.nix
-    # --- --- --- delete
-    ./kde.nix
-    ./flatpak.nix
-    # --- --- --- delete
     ./fastfetch.nix
     ./fuzzel.nix
     ./cliphist.nix

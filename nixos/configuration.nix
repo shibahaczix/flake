@@ -153,6 +153,11 @@
     pkgs.uutils-coreutils-noprefix
   ];
 
+  # DELETE
+  services.flatpak.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  # DELETE
+
   system.stateVersion = "24.05";
 
 }
