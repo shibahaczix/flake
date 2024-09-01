@@ -118,14 +118,21 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-    config = {
-      common = {
-        default = [
-          "wlr"
-        ];
+    wlr = {
+      enable = true;
+      settings = {
+        screencast = {
+          output_name = "HDMI-A-1";
+          max_fps = 60;
+          #exec_before = "disable_notifications.sh";
+          #exec_after = "enable_notifications.sh";
+          chooser_type = "simple";
+          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+        };
       };
     };
+    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+    config.common.default = "*";
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -152,13 +159,6 @@
   environment.systemPackages = [
     pkgs.uutils-coreutils-noprefix
   ];
-
-  # DELETE
-  services.flatpak.enable = true;
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  # DELETE
 
   system.stateVersion = "24.05";
 
