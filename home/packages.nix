@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    mission-center
+    htop
+    #mission-center
     fastfetch
     pamixer
     floorp
@@ -18,5 +19,6 @@
     godot_4
     xwayland-run
     baobab
+    wlr-randr
   ];
 }

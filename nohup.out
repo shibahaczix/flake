@@ -1,0 +1,5 @@
+22:29:49 [0m[33m[WARN] [0m(main) socket file /run/user/1000/swww-wayland-1.socket was not deleted when the previous daemon exited
+22:29:49 [0m[34m[INFO] [0m(main) Selected wl_shm format: Xbgr8888
+22:29:49 [0m[34m[INFO] [0m(main) Initialization succeeded! Starting main loop...
+22:29:49 [0m[34m[INFO] [0m(transition) BumpPool with: 1 buffers. Size: 4098Kb
+22:29:49 [0m[34m[INFO] [0m(transition) BumpPool with: 1 buffers. Size: 8100Kb

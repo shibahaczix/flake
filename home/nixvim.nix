@@ -5,7 +5,13 @@
     enable = true;
     extraPlugins = [ pkgs.vimPlugins.fleet-theme-nvim ];
     colorscheme = "fleet";
-    opts.number = true;
+    opts = {
+      number = true;
+      expandtab = true;
+      shiftwidth = 2;
+      softtabstop = 2;
+      tabstop = 2;
+    };
     clipboard = {
       register = "unnamedplus";
       providers = {
