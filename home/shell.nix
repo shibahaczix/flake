@@ -5,6 +5,7 @@
     g = "git";
     fs = "fastfetch";
     vim = "nvim";
+    fl = "sudo nixos-rebuild switch --flake .#nixos";
   };
 
   programs.bash = {

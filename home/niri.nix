@@ -19,6 +19,8 @@
 
         Mod+Return { spawn "kitty"; }
 
+        Mod+Shift+Delete { show-hotkey-overlay; }
+
         Mod+C { screenshot; }
         Mod+Q { close-window; }
         Mod+F { maximize-column; }

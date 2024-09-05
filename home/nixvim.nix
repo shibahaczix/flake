@@ -5,6 +5,13 @@
     enable = true;
     extraPlugins = [ pkgs.vimPlugins.fleet-theme-nvim ];
     colorscheme = "fleet";
+    extraConfigVim = ''
+      vnoremap < <gv
+      vnoremap > >gv
+
+      xnoremap < <gv
+      xnoremap > >gv
+    '';
     opts = {
       number = true;
       expandtab = true;
