@@ -16,7 +16,6 @@
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     niri.url = "git+https://github.com/sodiboo/niri-flake";
     stylix.url = "github:danth/stylix";
     nixvim = {
@@ -26,7 +25,7 @@
     prismlauncher.url = "github:PrismLauncher/PrismLauncher";
   };
 
-  outputs = { self, nixpkgs, home-manager, chaotic, auto-cpufreq, hyprland, stylix, nixvim, prismlauncher, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, chaotic, auto-cpufreq, stylix, nixvim, prismlauncher, ... }@inputs: 
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};

@@ -27,7 +27,6 @@
       nixvim.enable = false;
       kitty.enable = false;
       fish.enable = false;
-      hyprland.enable = false;
       vesktop.enable = true;
     };
 

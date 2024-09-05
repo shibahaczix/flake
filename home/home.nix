@@ -10,7 +10,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    inputs.hyprland.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
     inputs.niri.homeModules.niri
     ./packages.nix

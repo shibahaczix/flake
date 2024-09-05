@@ -6,11 +6,28 @@
     extraPlugins = [ pkgs.vimPlugins.fleet-theme-nvim ];
     colorscheme = "fleet";
     extraConfigVim = ''
+
+      " Reselect selected space when pressing > <
       vnoremap < <gv
       vnoremap > >gv
-
       xnoremap < <gv
       xnoremap > >gv
+
+      " Make Ctrl+Backspace delete a whole word
+      nnoremap <C-BS> db
+      inoremap <C-BS> <C-w>
+
+      " Make Ctrl+Delete delete the word after the cursor
+      nnoremap <C-Del> dw
+      inoremap <C-Del> <C-o>dw
+
+      " Make Ctrl+Left Arrow move cursor one word left
+      nnoremap <C-Left> b
+      inoremap <C-Left> <C-o>b
+
+      " Make Ctrl+Right Arrow move cursor one word right
+      nnoremap <C-Right> w
+      inoremap <C-Right> <C-o>w
     '';
     opts = {
       number = true;

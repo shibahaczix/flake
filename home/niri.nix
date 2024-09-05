@@ -3,7 +3,7 @@
 {
   programs.niri = {
     enable = true;
-    #settings = {}; switch to it in the future
+    #settings = {}; 
     config = ''
       spawn-at-startup "swww-daemon"
       spawn-at-startup "swww" "img" "/home/shiba/flake/home/wallpaper1.jpg"
@@ -83,54 +83,8 @@
         }
       }
       animations {
-        // off
-        // slowdown 10.0
-        // slowdown 4.0
-        // slowdown 2.0
-        // slowdown 1.5
-
-        workspace-switch {
-            // off
-            spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-        }
-
-        window-open {
-            // off
-            // duration-ms 2500
-            // curve "ease-out-expo"
-            // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
-        }
-
-        window-close {
-            // off
-            // duration-ms 2500
-            // curve "ease-out-cubic"
-            // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
-        }
-
-        horizontal-view-movement {
-            // off
-            // duration-ms 500
-            // curve "ease-out-cubic"
-            // spring damping-ratio=1.0 stiffness=20 epsilon=0.00001
-            // spring damping-ratio=10.0 stiffness=800 epsilon=0.0001
-        }
-
-        window-movement {
-            // off
-            // duration-ms 750
-            // curve "ease-out-cubic"
-            // spring damping-ratio=1.0 stiffness=20 epsilon=0.00001
-            // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
-        }
 
         window-resize {
-            // off
-            // duration-ms 500
-            // duration-ms 2500
-            // curve "ease-out-cubic"
-            // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
-
             custom-shader r"
                 vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
                     vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
@@ -175,13 +129,6 @@
                 }
             "
         }
-
-      config-notification-open-close {
-          // off
-          // duration-ms 250
-          // curve "ease-out-cubic"
-          // spring damping-ratio=0.1 stiffness=1000 epsilon=0.001
-      }
   }
     '';
   };
