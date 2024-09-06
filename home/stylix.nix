@@ -27,6 +27,7 @@
       nixvim.enable = false;
       kitty.enable = false;
       fish.enable = false;
+      fuzzel.enable = false;
       vesktop.enable = true;
     };
 

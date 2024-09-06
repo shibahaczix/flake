@@ -21,7 +21,8 @@
     ./fuzzel.nix
     ./cliphist.nix
     ./kitty.nix
-    ./stylix.nix # Automatic home-manager module detection
+    ./stylix.nix
+    ./fonts.nix
     ./eww.nix
     ./nixvim.nix
   ];

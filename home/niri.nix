@@ -76,10 +76,8 @@
           // off
           on
           width 4
-          active-color "#7fc8ff"
+          active-color "#95e6cb"
           inactive-color "#505050"
-          // active-gradient from="#80c8ff" to="#bbddff" angle=45
-          // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         }
       }
       animations {

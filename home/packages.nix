@@ -16,5 +16,8 @@
     xwayland-run
     baobab
     wlr-randr
+    wine64Packages.wayland
+    steam
+    steam-run
   ];
 }
