@@ -1,9 +1,11 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, ... }: 
 
 {
   programs.niri = {
     enable = true;
-    #settings = {}; 
+    settings = {
+      
+    }; 
     config = ''
       spawn-at-startup "swww-daemon"
       spawn-at-startup "swww" "img" "/home/shiba/flake/home/wallpaper1.jpg"

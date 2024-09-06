@@ -25,6 +25,7 @@
     ./fonts.nix
     ./eww.nix
     ./nixvim.nix
+    ./prismlauncher.nix
   ];
 
   # Symlink example
