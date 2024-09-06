@@ -13,7 +13,6 @@
     ./packages.nix
     ./git.nix
     ./shell.nix
-    ./gammastep.nix
     ./niri.nix
     ./fastfetch.nix
     ./fuzzel.nix
