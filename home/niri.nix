@@ -1,10 +1,17 @@
-{ pkgs, ... }: 
+{ config, pkgs, inputs, ... }: 
 
 {
+  imports = [
+    inputs.niri.homeModules.niri
+  ];
+  home.packages = with pkgs; [
+    swww
+    xwayland-run
+  ];
   programs.niri = {
     enable = true;
     settings = {
-      
+      # TODO: Use this instead of config
     }; 
     config = ''
       spawn-at-startup "swww-daemon"

@@ -10,8 +10,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-    inputs.niri.homeModules.niri
     ./packages.nix
     ./git.nix
     ./shell.nix

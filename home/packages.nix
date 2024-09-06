@@ -9,14 +9,11 @@
     nautilus
     vesktop
     obs-studio
-    swww
     gimp
     blockbench
     godot_4
-    xwayland-run
     baobab
     wlr-randr
-    wine64Packages.wayland
     steam
     steam-run
   ];

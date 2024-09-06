@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
   programs.nixvim = {
     enable = true;
     extraPlugins = [ pkgs.vimPlugins.fleet-theme-nvim ];
@@ -28,6 +31,7 @@
       " Make Ctrl+Right Arrow move cursor one word right
       nnoremap <C-Right> w
       inoremap <C-Right> <C-o>w
+
     '';
     opts = {
       number = true;

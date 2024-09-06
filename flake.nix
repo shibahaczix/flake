@@ -22,10 +22,9 @@
         url = "github:nix-community/nixvim";
         inputs.nixpkgs.follows = "nixpkgs";
     };
-    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
   };
 
-  outputs = { self, nixpkgs, home-manager, chaotic, auto-cpufreq, stylix, nixvim, prismlauncher, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -35,9 +34,6 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./nixos/configuration.nix
-        chaotic.nixosModules.default
-        auto-cpufreq.nixosModules.default
-        stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -45,9 +41,6 @@
           home-manager.users.shiba = import ./home/home.nix;
           home-manager.extraSpecialArgs = {inherit inputs;};
         }
-        ({pkgs, ...}: {
-          environment.systemPackages = [prismlauncher.packages.${pkgs.system}.prismlauncher];
-        })
       ];
     };
   };

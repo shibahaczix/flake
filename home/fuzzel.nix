@@ -4,9 +4,8 @@
   programs.fuzzel.enable = true;
   programs.fuzzel.settings = {
     main = {
-      terminal = "${pkgs.kitty}/bin/kitty";
-      layer = "overlay";
-      font = "JetBrainsMono NF";
+      terminal = "kitty";
+      font = "JetBrainsMono NF SemiBold";
       line-height = 22;
     };
     colors.background = "171717ff";

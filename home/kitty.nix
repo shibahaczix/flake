@@ -34,6 +34,8 @@
       color15 = ''#ffffff'';
       selection_foreground = ''#212733'';
       background_opacity = ''0.0'';
+      window_border_width = "0px";
+      tab_bar_margin_width = "0.0";
     };
     keybindings = {
       "ctrl+shift+c" = "copy_to_clipboard";
