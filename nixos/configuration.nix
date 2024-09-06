@@ -115,6 +115,8 @@
    options = "--delete-older-than 7d";
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   stylix = {
     enable = true;
     image = /home/shiba/flake/nixos/wallpaper.jpg;

@@ -13,7 +13,6 @@
     blockbench
     godot_4
     baobab
-    wlr-randr
     steam
     steam-run
   ];

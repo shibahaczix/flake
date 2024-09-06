@@ -11,6 +11,8 @@
     colors.background = "171717ff";
     colors.border = "95e6cbff";
     colors.text = "ffffffff";
+    colors.selection = "#101010ff";
+    colors.selection-text = "#f0f0f0 ff";
     border.width = 4;
   };
 }

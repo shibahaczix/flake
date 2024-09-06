@@ -17,7 +17,6 @@
     ./niri.nix
     ./fastfetch.nix
     ./fuzzel.nix
-    ./cliphist.nix
     ./kitty.nix
     ./stylix.nix
     ./fonts.nix

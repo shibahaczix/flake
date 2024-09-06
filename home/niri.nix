@@ -7,7 +7,10 @@
   home.packages = with pkgs; [
     swww
     xwayland-run
+    wl-clipboard
+    wlr-randr
   ];
+  services.cliphist.enable = true;
   programs.niri = {
     enable = true;
     settings = {
@@ -16,6 +19,8 @@
     config = ''
       spawn-at-startup "swww-daemon"
       spawn-at-startup "swww" "img" "/home/shiba/flake/home/wallpaper1.jpg"
+      spawn-at-startup "wl-paste" "--type text" "--watch" "cliphist" "store"
+      spawn-at-startup "wl-paste" "--type image" "--watch" "cliphist" "store"
       output "HDMI-A-1" {
         scale 1.0
         mode "1920x1080@71.910004"
