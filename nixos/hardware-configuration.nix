@@ -24,7 +24,7 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices =
+  swapDevices = 
     [ { device = "/dev/disk/by-uuid/b2f45c24-937c-4792-9973-db08cb26ebc5"; }
     ];
 

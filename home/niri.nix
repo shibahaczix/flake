@@ -4,19 +4,23 @@
   imports = [
     inputs.niri.homeModules.niri
   ];
+
   home.packages = with pkgs; [
     swww
     xwayland-run
     wl-clipboard
     wlr-randr
   ];
+
   services.cliphist.enable = true;
+
   services.gammastep = {
     enable = true;
     provider = "manual";
     latitude = 52.2;
     longitude = 18.2;
   };
+
   programs.niri = {
     enable = true;
     settings = {
