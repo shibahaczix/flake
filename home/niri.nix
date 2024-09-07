@@ -27,8 +27,6 @@
       spawn-at-startup = [
         { command = [ "swww-daemon" ]; }
         { command = [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ]; }
-        { command = [ "wl-paste" "--type text" "--watch" "cliphist" "store" ]; }
-        { command = [ "wl-paste" "--type image" "--watch" "cliphist" "store" ]; }
       ];
       outputs."HDMI-A-1" = {
         mode = {

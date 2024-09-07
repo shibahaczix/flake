@@ -122,24 +122,20 @@
     image = /home/shiba/flake/nixos/wallpaper.jpg;
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
-    config.common.default = "*";
-  };
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-run"
-  ];
+  # Gnome should be default in Niri
+  #xdg.portal = {
+  #  enable = true;
+  #  extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+  #  config.common.default = "*";
+  #};
 
   programs.gamemode.enable = true;
 
   environment.systemPackages = [
     pkgs.uutils-coreutils-noprefix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # I USE IT FOR SOBER
   #services.flatpak.enable = true;

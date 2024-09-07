@@ -209,6 +209,10 @@
           zls = {
             enable = true;
           };
+          slint-lsp = {
+            enable = true;
+            autostart = true;
+          };
         };
       };
     };

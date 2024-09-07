@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.packages = with pkgs; [
@@ -13,7 +13,7 @@
     blockbench
     godot_4
     baobab
-    steam
+    steam 
     steam-run
   ];
 }
