@@ -1,17 +1,13 @@
 {
   description = "Shiba's flake";
 
-  # README: 
-  # Leave comments that arent by me they might be helpful
-
-  # Sorted by most important*
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Probably not gonna use it in home for packages
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -12,7 +12,7 @@
     colors.border = "95e6cbff";
     colors.text = "ffffffff";
     colors.selection = "#101010ff";
-    colors.selection-text = "#f0f0f0 ff";
+    colors.selection-text = "#f0f0f0ff";
     border.width = 4;
   };
 }
