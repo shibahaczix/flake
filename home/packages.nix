@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -9,11 +9,12 @@
     nautilus
     vesktop
     obs-studio
-    gimp
+    krita
     blockbench
     godot_4
     baobab
     steam 
     steam-run
+    mindustry-wayland
   ];
 }

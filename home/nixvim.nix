@@ -1,9 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }:
 
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
   ];
+
   programs.nixvim = {
     enable = true;
     extraPlugins = [ pkgs.vimPlugins.fleet-theme-nvim ];

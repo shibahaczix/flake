@@ -21,22 +21,32 @@
     longitude = 18.2;
   };
 
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
+    package = pkgs.niri;
     enable = true;
     settings = {
       spawn-at-startup = [
         { command = [ "swww-daemon" ]; }
         { command = [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ]; }
       ];
-      outputs."HDMI-A-1" = {
-        mode = {
-          width = 1920;
-          height = 1080;
-          refresh = 71.910004;
+      outputs = {
+        "HDMI-A-1" = {
+          mode = {
+            width = 1920;
+            height = 1080;
+            refresh = 71.910004;
+          };
+        };
+        "LVDS-1" = {
+          enable = false;
         };
       };
-      outputs."LVDS-1" = {
-        enable = false;
+
+      input = {
+        mouse = {
+          accel-profile = "flat";
+        };
       };
       hotkey-overlay.skip-at-startup = true;
       binds = 
@@ -97,10 +107,23 @@
           clip-to-geometry = true;
         }
       ];
-      layout.border = {
-        inactive.color = "rgb(80 80 80)";
-        active.color = "rgb(80 80 80)";
-      };
-    }; 
+      layout = {
+        #gaps = 4;
+        #center-focused-column = "always";
+        preset-column-widths = [
+          { proportion = 0.33333; }
+          { proportion = 0.5; }
+          { proportion = 0.66667; }
+          { proportion = 1.0; }
+        ];
+        default-column-width = {
+          proportion = 1.0;
+        };
+        border = {
+          inactive.color = "rgb(80 80 80)";
+          active.color = "rgb(80 80 80)";
+        };
+      }; 
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ ... }:
 
 {
   home.username = "shiba";
@@ -26,10 +26,6 @@
 
   # Symlink example
   # home.file.".zshrc".source = ./zshrc; 
-
-  # Programs and services here
-
-
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
