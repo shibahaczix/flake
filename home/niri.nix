@@ -3,13 +3,18 @@
 {
   imports = [
     inputs.niri.homeModules.niri
+    inputs.chaotic.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
     swww
-    xwayland-run
     wl-clipboard
+    wayland-utils
+    libsecret
+    cage
+    gamescope
     wlr-randr
+    xwayland-satellite
   ];
 
   services.cliphist.enable = true;
@@ -21,14 +26,19 @@
     longitude = 18.2;
   };
 
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
-    package = pkgs.niri;
     enable = true;
+    package = pkgs.niri_git;
     settings = {
       spawn-at-startup = [
         { command = [ "swww-daemon" ]; }
         { command = [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ]; }
+        { command = [ "xwayland-satellite" ]; }
       ];
       outputs = {
         "HDMI-A-1" = {

@@ -18,6 +18,7 @@
         url = "github:nix-community/nixvim";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 

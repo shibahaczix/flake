@@ -16,5 +16,7 @@
     steam 
     steam-run
     mindustry-wayland
+    lutris
+    mangohud
   ];
 }
