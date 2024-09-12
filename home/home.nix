@@ -20,7 +20,7 @@
     ./stylix.nix
     ./fonts.nix
     ./eww.nix
-    ./nixvim.nix # Might switch to helix if i like it
+    ./nixvim.nix
     ./prismlauncher.nix
   ];
 

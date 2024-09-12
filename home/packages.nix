@@ -18,5 +18,6 @@
     mindustry-wayland
     lutris
     mangohud
+    mpv
   ];
 }
