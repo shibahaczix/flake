@@ -1,7 +1,9 @@
 { pkgs, config, lib, inputs, ... }:
 
 {
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
 
   programs.nixvim = {
     enable = true;
@@ -20,7 +22,7 @@
       inoremap <C-BS> <C-w>
 
       " Make Ctrl+Delete delete the word after the cursor
-      nnoremap <C-dw
+      nnoremap <C-Del> dw
       inoremap <C-Del> <C-o>dw
 
       " Make Ctrl+Left Arrow move cursor one word left
@@ -53,19 +55,29 @@
       #  enable = true;
       #};
 
-      nvim-colorizer = { enable = true; };
+      nvim-colorizer = {
+        enable = true;
+      };
 
-      lazygit = { enable = true; };
+      lazygit = {
+        enable = true;
+      };
 
-      lualine = { enable = true; };
+      lualine = {
+        enable = true;
+      };
 
-      treesitter = { enable = true; };
+      treesitter = {
+        enable = true;
+      };
 
       auto-save.enable = true;
 
       telescope.enable = true;
 
-      oil = { enable = true; };
+      oil = {
+        enable = true;
+      };
 
       toggleterm = {
         enable = true;
@@ -80,7 +92,9 @@
 
       #lightline.enable = true;
 
-      cmp-emoji = { enable = true; };
+      cmp-emoji = {
+        enable = true;
+      };
 
       cmp = {
         enable = true;
@@ -126,15 +140,16 @@
             "<C-f>" = "cmp.mapping.scroll_docs(4)";
             "<C-Space>" = "cmp.mapping.complete()";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<S-CR>" =
-              "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
+            "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
           };
         };
       };
       cmp-nvim-lsp = {
         enable = true; # LSP
       };
-      cmp-buffer = { enable = true; };
+      cmp-buffer = {
+        enable = true;
+      };
       cmp-path = {
         enable = true; # file system paths
       };
@@ -143,18 +158,18 @@
       };
       cmp-cmdline = {
         enable = true; # autocomplete for cmdline
-      };
+      }; 
 
       todo-comments = {
         enable = true;
         settings = {
           colors = {
-            error = [ "DiagnosticError" "ErrorMsg" "#DC2626" ];
-            warning = [ "DiagnosticWarn" "WarningMsg" "#FBBF24" ];
-            info = [ "DiagnosticInfo" "#2563EB" ];
-            hint = [ "DiagnosticHint" "#10B981" ];
-            default = [ "Identifier" "#7C3AED" ];
-            test = [ "Identifier" "#FF00FF" ];
+            error = ["DiagnosticError" "ErrorMsg" "#DC2626"];
+            warning = ["DiagnosticWarn" "WarningMsg" "#FBBF24"];
+            info = ["DiagnosticInfo" "#2563EB"];
+            hint = ["DiagnosticHint" "#10B981"];
+            default = ["Identifier" "#7C3AED"];
+            test = ["Identifier" "#FF00FF"];
           };
         };
       };
@@ -170,7 +185,7 @@
 
       fidget = {
         enable = true;
-        notification = {
+         notification = {
           window = {
             winblend = 0;
             relative = "editor";
@@ -192,7 +207,9 @@
             installRustc = true;
             installCargo = true;
           };
-          zls = { enable = true; };
+          zls = {
+            enable = true;
+          };
           slint-lsp = {
             enable = true;
             autostart = true;
@@ -205,7 +222,7 @@
       {
         key = "<C-/>";
         action = ":ToggleTerm<CR>";
-        mode = [ "n" "t" ];
+        mode = ["n" "t"];
         options = {
           silent = true;
           noremap = true;

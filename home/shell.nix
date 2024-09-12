@@ -21,8 +21,7 @@
     enable = true;
     # Configuration written to ~/.config/starship.toml
     settings = {
-      format =
-        "[](#A600FF)$os$username[](bg:#871BFF fg:#A600FF)$directory[](fg:#871BFF bg:#6836FF)$git_branch$git_status[](fg:#6836FF bg:#4852FF)$c$elixir$elm$golang$gradle$haskell$java$julia$nodejs$nim$rust$scala[](fg:#4852FF bg:#296DFF)$docker_context[](fg:#296DFF bg:#0A88FF)$time[ ](fg:#0A88FF)";
+      format = "[](#A600FF)$os$username[](bg:#871BFF fg:#A600FF)$directory[](fg:#871BFF bg:#6836FF)$git_branch$git_status[](fg:#6836FF bg:#4852FF)$c$elixir$elm$golang$gradle$haskell$java$julia$nodejs$nim$rust$scala[](fg:#4852FF bg:#296DFF)$docker_context[](fg:#296DFF bg:#0A88FF)$time[ ](fg:#0A88FF)";
       username = {
         show_always = true;
         style_user = "bg:#A600FF";

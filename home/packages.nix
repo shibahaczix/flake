@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     htop
-    fastfetch
     pamixer
     floorp
     nautilus
