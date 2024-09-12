@@ -108,11 +108,11 @@
    allowReboot = true;
   };
 
+  nix.settings.auto-optimise-store = true;
   nix.gc = {
    automatic = true;
-   persistent = false;
    dates = "daily";
-   options = "--delete-older-than 7d";
+   options = "--delete-older-than 1d";
   };
 
   services.gnome.gnome-keyring.enable = true;
