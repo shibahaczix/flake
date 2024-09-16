@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.niri.homeModules.niri
-    inputs.chaotic.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
@@ -57,6 +56,11 @@
         mouse = {
           accel-profile = "flat";
         };
+        keyboard = {
+          xkb = {
+            layout = "pl";
+          };
+        };
       };
       hotkey-overlay.skip-at-startup = true;
       binds = 
@@ -68,6 +72,7 @@
         "Mod+Return".action.spawn = "${lib.getExe pkgs.kitty}";
         "Mod+Space".action.spawn = "${lib.getExe pkgs.fuzzel}";
         "Mod+C".action = screenshot;
+        "Mod+Shift+C".action = screenshot-window;
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+J".action = spawn "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" "--transition-type" "center";
