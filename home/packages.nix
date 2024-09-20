@@ -8,7 +8,8 @@
     nautilus
     vesktop
     obs-studio
-    krita
+    gimp
+    inkscape
     blockbench
     godot_4
     baobab
@@ -18,5 +19,6 @@
     lutris
     mangohud
     mpv
+    tmux
   ];
 }
