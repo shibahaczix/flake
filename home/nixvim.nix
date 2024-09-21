@@ -35,7 +35,8 @@
 
     '';
     opts = {
-      number = true;
+      #number = true;
+      relativenumber = true;
       expandtab = true;
       shiftwidth = 2;
       softtabstop = 2;
@@ -208,6 +209,9 @@
             installCargo = true;
           };
           zls = {
+            enable = true;
+          };
+          clangd = {
             enable = true;
           };
           slint-lsp = {

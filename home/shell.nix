@@ -50,7 +50,7 @@
 
       c = {
         symbol = " ";
-        style = "bg:#6836FF";
+        style = "bg:#4852FF";
         format = "[ $symbol ($version) ]($style)";
       };
 
@@ -62,13 +62,13 @@
 
       elixir = {
         symbol = " ";
-        style = "bg:#6836FF";
+        style = "bg:#4852FF";
         format = "[ $symbol ($version) ]($style)";
       };
 
       elm = {
         symbol = " ";
-        style = "bg:#6836FF";
+        style = "bg:#4852FF";
         format = "[ $symbol ($version) ]($style)";
       };
 
