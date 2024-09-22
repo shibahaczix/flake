@@ -33,6 +33,11 @@
       nnoremap <C-Right> w
       inoremap <C-Right> <C-o>w
 
+      set undofile                    " Enable persistent undo across sessions
+      set undodir=~/.config/nvim/undo  " Directory to store undo history
+      set undolevels=1000              " Number of undo levels to store
+      set undoreload=10000             " Maximum number of lines to save for undo
+
     '';
     opts = {
       #number = true;
