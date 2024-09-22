@@ -131,8 +131,8 @@
 
   programs.gamemode.enable = true;
 
-  environment.systemPackages = [
-    pkgs.uutils-coreutils-noprefix
+  environment.systemPackages = with pkgs; [
+    uutils-coreutils-noprefix
   ];
 
   nixpkgs.config.allowUnfree = true;
