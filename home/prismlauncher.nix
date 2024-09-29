@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    inputs.prismlauncher.packages.${pkgs.system}.prismlauncher
+    (inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override{withWaylandGLFW=true;})
   ];
   home.file = {
     ".local/share/PrismLauncher/iconthemes".source = ./PrismLauncher/iconthemes; 

@@ -15,6 +15,7 @@
     ./shell.nix
     ./niri.nix
     ./fastfetch.nix
+    ./htop.nix
     ./fuzzel.nix
     ./kitty.nix
     ./stylix.nix

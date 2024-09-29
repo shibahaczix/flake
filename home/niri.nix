@@ -18,6 +18,13 @@
 
   services.cliphist.enable = true;
 
+  services.mako = {
+    enable = true;
+    #font = "JetBrainsMono NF 10"; stylix
+    borderSize = 2;
+    borderRadius = 0;
+  };
+
   services.gammastep = {
     enable = true;
     provider = "manual";

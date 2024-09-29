@@ -210,8 +210,8 @@
           };
           rust-analyzer = {
             enable = true;
-            installRustc = true;
-            installCargo = true;
+            installRustc = false;
+            installCargo = false;
           };
           zls = {
             enable = true;
@@ -222,6 +222,9 @@
           slint-lsp = {
             enable = true;
             autostart = true;
+          };
+          tailwindcss = {
+            enable = true;
           };
         };
       };

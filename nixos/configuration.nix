@@ -115,19 +115,20 @@
    options = "--delete-older-than 1d";
   };
 
-  services.gnome.gnome-keyring.enable = true;
-
   stylix = {
     enable = true;
     image = /home/shiba/flake/nixos/wallpaper.jpg;
   };
 
-  # Gnome should be default in Niri
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
-  #  config.common.default = "*";
-  #};
+  # Should be in niri-flake
+  services.gnome.gnome-keyring.enable = true;
+
+  # Gnome should be default in niri-flake
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 
   programs.gamemode.enable = true;
 
@@ -136,9 +137,6 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-
-  # I USE IT FOR SOBER
-  #services.flatpak.enable = true;
 
   system.stateVersion = "24.05";
 

@@ -1,24 +1,24 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
-    htop
+    inputs.zen-browser.packages."${system}".generic
+    steam
+    steam-run
     pamixer
-    floorp
     nautilus
     vesktop
     obs-studio
     gimp
-    inkscape
-    blockbench
     godot_4
     baobab
-    steam 
-    steam-run
     mindustry-wayland
     lutris
     mangohud
     mpv
     tmux
+    kdenlive
+    amberol
+    yt-dlp
   ];
 }
