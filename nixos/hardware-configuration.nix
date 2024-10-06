@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "i915.force_probe=0166" ];
 
   fileSystems."/" =
     { device = "UUID=1219ecf2-136d-486c-b61b-b66fb6803700";

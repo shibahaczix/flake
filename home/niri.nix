@@ -9,9 +9,6 @@
     swww
     wl-clipboard
     wayland-utils
-    libsecret
-    cage
-    gamescope
     wlr-randr
     xwayland-satellite
   ];
@@ -22,7 +19,7 @@
     enable = true;
     #font = "JetBrainsMono NF 10"; stylix
     borderSize = 2;
-    borderRadius = 0;
+    borderRadius = 5;
   };
 
   services.gammastep = {

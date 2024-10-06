@@ -61,6 +61,8 @@
       #  enable = true;
       #};
 
+      web-devicons.enable = true;
+
       nvim-colorizer = {
         enable = true;
       };

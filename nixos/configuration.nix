@@ -25,8 +25,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
-  chaotic.scx.enable = true; # by default uses scx_rustland scheduler
+  chaotic.scx.enable = true; # By default uses scx_rustland scheduler
   chaotic.mesa-git.enable = true;
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+    ];
+  };
 
   programs.auto-cpufreq = {
     enable = true;
@@ -78,28 +84,14 @@
     isNormalUser = true;
     description = "shiba";
     password = "123";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     ];
   };
 
-  # Issue with git on nixos-rebuild
-  #security.doas = {
-  #  enable = true;
-  #  extraRules = [{
-  #    users = ["shiba"];
-  #    keepEnv = true; 
-  #    persist = true;
-  #  }];
-  #};
-  #security.sudo.enable = false;
-
-  #programs.nh = {
-  #  enable = true;
-  #  clean.enable = true;
-  #  clean.extraArgs = "--keep-since 4d --keep 3";
-  #  flake = "/home/shiba/flake";
-  #};
+  # QEMU
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   system.autoUpgrade = {
    enable = true;
@@ -120,10 +112,9 @@
     image = /home/shiba/flake/nixos/wallpaper.jpg;
   };
 
-  # Should be in niri-flake
+  # niri-flake
   services.gnome.gnome-keyring.enable = true;
 
-  # Gnome should be default in niri-flake
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
@@ -136,8 +127,18 @@
     uutils-coreutils-noprefix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  # Packages enabled in home/packages
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "cinny-unwrapped-4.2.1"
+      "cinny-4.2.1"
+    ];
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-original"
+      "steam-run"
+    ];
+  };
 
   system.stateVersion = "24.05";
-
 }

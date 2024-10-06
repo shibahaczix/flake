@@ -8,7 +8,9 @@
     fl = "sudo nixos-rebuild switch --flake .#nixos";
   };
 
-  programs.bash = { enable = true; };
+  programs.bash = { 
+    enable = true; 
+  };
 
   programs.fish = {
     enable = true;
