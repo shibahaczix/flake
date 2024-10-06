@@ -10,7 +10,7 @@
     wl-clipboard
     wayland-utils
     wlr-randr
-    xwayland-satellite
+    inputs.xwayland-satellite.packages.${pkgs.system}.xwayland-satellite
   ];
 
   services.cliphist.enable = true;
