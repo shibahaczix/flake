@@ -21,5 +21,6 @@
     kdenlive # Video editing
     amberol # Music player
     yt-dlp # Youtube downloader
+    ffmpeg # Video stuff
   ];
 }
