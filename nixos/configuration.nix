@@ -31,6 +31,9 @@
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
+      intel-vaapi-driver
+      libvdpau-va-gl
+      intel-media-driver
     ];
   };
 
@@ -127,7 +130,7 @@
     uutils-coreutils-noprefix
   ];
 
-  # Packages enabled in home/packages
+  # For packages enabled in home/packages
   nixpkgs.config = {
     permittedInsecurePackages = [
       "cinny-unwrapped-4.2.1"

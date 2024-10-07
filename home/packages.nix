@@ -10,7 +10,6 @@
     cinny-desktop # Matrix client
     nautilus # File manager
     vesktop # Discord
-    obs-studio # OBS
     gimp # Paint
     baobab # Disk checker
     mindustry-wayland # Game

@@ -5,7 +5,7 @@
   programs.fuzzel.settings = {
     main = {
       terminal = "kitty";
-      font = "JetBrainsMono NF SemiBold";
+      font = "JetBrainsMono NF";
       line-height = 22;
     };
     colors.background = "171717ff";

@@ -20,6 +20,7 @@
     ./kitty.nix
     ./stylix.nix
     ./fonts.nix
+    ./obs.nix
     ./eww.nix
     ./nixvim.nix
     ./prismlauncher.nix
