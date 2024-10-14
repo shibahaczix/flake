@@ -25,6 +25,7 @@
     targets = {
       gtk.enable = true;
       nixvim.enable = false;
+      helix.enable = false;
       kitty.enable = false;
       fish.enable = false;
       fuzzel.enable = false;

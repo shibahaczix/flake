@@ -22,7 +22,7 @@
     ./fonts.nix
     ./obs.nix
     ./eww.nix
-    ./nixvim.nix
+    ./helix.nix
     ./prismlauncher.nix
   ];
 

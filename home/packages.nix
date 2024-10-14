@@ -12,6 +12,7 @@
     vesktop # Discord
     gimp # Paint
     baobab # Disk checker
+    godot_4 # Game engine
     mindustry-wayland # Game
     lutris # Lutris
     mangohud # Mangohud

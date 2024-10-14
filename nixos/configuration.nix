@@ -4,10 +4,8 @@
   nix = {
     settings = {
       trusted-users = [ "shiba" ];
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org/"
-      ];
+      substituters =
+        [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
@@ -19,7 +17,7 @@
     inputs.auto-cpufreq.nixosModules.default
     inputs.stylix.nixosModules.stylix
     ./hardware-configuration.nix
-  ]; 
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,8 +28,7 @@
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [
-    ];
+    extraPackages = with pkgs; [ ];
   };
 
   programs.auto-cpufreq = {
@@ -85,8 +82,7 @@
     description = "shiba";
     password = "123";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [ ];
   };
 
   # QEMU
@@ -94,17 +90,17 @@
   programs.virt-manager.enable = true;
 
   system.autoUpgrade = {
-   enable = true;
-   dates = "*-*-* 04:00:00";
-   persistent = true;
-   allowReboot = true;
+    enable = true;
+    dates = "*-*-* 04:00:00";
+    persistent = true;
+    allowReboot = true;
   };
 
   nix.settings.auto-optimise-store = true;
   nix.gc = {
-   automatic = true;
-   dates = "daily";
-   options = "--delete-older-than 1d";
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 1d";
   };
 
   stylix = {
@@ -117,27 +113,23 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
     config.common.default = "*";
   };
 
   programs.gamemode.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    uutils-coreutils-noprefix
-  ];
+  environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
 
   # For packages enabled in home/packages
   nixpkgs.config = {
-    permittedInsecurePackages = [
-      "cinny-unwrapped-4.2.1"
-      "cinny-4.2.1"
-    ];
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-run"
-    ];
+    permittedInsecurePackages = [ "cinny-unwrapped-4.2.1" "cinny-4.2.1" ];
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [ "steam" "steam-original" "steam-run" ];
   };
 
   system.stateVersion = "24.05";
