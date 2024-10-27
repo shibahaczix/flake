@@ -24,12 +24,11 @@
 
     targets = {
       gtk.enable = true;
-      nixvim.enable = false;
+      mako.enable = true;
       helix.enable = false;
       kitty.enable = false;
       fish.enable = false;
       fuzzel.enable = false;
-      vesktop.enable = true;
     };
 
     cursor = {

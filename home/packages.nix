@@ -3,13 +3,13 @@
 {
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".generic # Web browser
+    vesktop # Discord
     gnome-calendar # Calendar
     steam # Stean app
     steam-run # For running
     pamixer # Audio
     cinny-desktop # Matrix client
     nautilus # File manager
-    vesktop # Discord
     gimp # Paint
     baobab # Disk checker
     godot_4 # Game engine

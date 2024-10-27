@@ -4,10 +4,14 @@
   nix = {
     settings = {
       trusted-users = [ "shiba" ];
-      substituters =
-        [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://nix-community.cachix.org"
+        "https://prismlauncher.cachix.org"
+      ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
       ];
     };
   };
@@ -21,7 +25,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
   chaotic.scx.enable = true; # By default uses scx_rustland scheduler
   chaotic.mesa-git.enable = true;
@@ -105,7 +108,7 @@
 
   stylix = {
     enable = true;
-    image = /home/shiba/flake/nixos/wallpaper.jpg;
+    image = ./wallpaper.jpg;
   };
 
   # niri-flake
@@ -119,6 +122,17 @@
       xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
+  };
+
+  services.greetd = {
+    enable = true;
+    vt = 2;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri-session";
+        user = "greeter";
+      };
+    };
   };
 
   programs.gamemode.enable = true;

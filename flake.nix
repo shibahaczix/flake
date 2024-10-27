@@ -27,6 +27,14 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #eww = {
+    #  url = "github:elkowar/eww";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +47,7 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      system = "x86_64-linux";
+      system = "x86_64-nixos";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

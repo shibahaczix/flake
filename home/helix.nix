@@ -1,15 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.helix = {
     enable = true;
+    package = inputs.helix.packages."${pkgs.system}".helix;
     settings = {
       keys = {
         normal = {
           C-right = "move_next_word_end";
           C-left = "move_prev_word_start";
           C-o = ":config-open";
-          C-r = ":config-reload";
+          C-r = [ "redo" "collapse_selection" ];
           C-h = "select_prev_sibling";
           C-j = "shrink_selection";
           C-k = "expand_selection";
@@ -278,11 +279,14 @@
         display-inlay-hints = true;
         display-messages = true;
       };
+      editor = { line-number = "relative"; };
     };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-    }];
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+      }
+    ];
   };
 }

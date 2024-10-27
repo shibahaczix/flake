@@ -21,7 +21,7 @@
     ./stylix.nix
     ./fonts.nix
     ./obs.nix
-    ./eww.nix
+    #./eww.nix
     ./helix.nix
     ./prismlauncher.nix
   ];
