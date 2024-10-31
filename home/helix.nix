@@ -262,7 +262,7 @@
           ];
           p = "replace_selections_with_clipboard";
           P = "paste_clipboard_before";
-          esc = [ "collapse_selection" "keep_primary_selection" "normal_mode" ];
+          esc = [ "collapse_selection" ];
         };
       };
       theme = "fleet_dark";
@@ -281,12 +281,10 @@
       };
       editor = { line-number = "relative"; };
     };
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-      }
-    ];
+    languages.language = [{
+      name = "nix";
+      auto-format = true;
+      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+    }];
   };
 }

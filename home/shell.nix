@@ -4,7 +4,6 @@
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
-    fl = "sudo nixos-rebuild switch --flake .#nixos";
   };
 
   programs.bash = { enable = true; };

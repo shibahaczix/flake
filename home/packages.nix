@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".generic # Web browser
+    piper # Mouse software
     vesktop # Discord
     gnome-calendar # Calendar
     steam # Stean app
@@ -22,5 +23,6 @@
     amberol # Music player
     yt-dlp # Youtube downloader
     ffmpeg # Video stuff
+    protonup-qt
   ];
 }

@@ -25,6 +25,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
   chaotic.scx.enable = true; # By default uses scx_rustland scheduler
   chaotic.mesa-git.enable = true;
@@ -100,11 +101,21 @@
   };
 
   nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 1d";
+  #nix.gc = {
+  #  automatic = true;
+  #  dates = "daily";
+  #  options = "--delete-older-than 1d";
+  #};
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 1d --keep 3";
+    flake = "/home/shiba/flake";
   };
+
+  security.doas.enable = true;
+  security.sudo.enable = false;
 
   stylix = {
     enable = true;
@@ -137,13 +148,20 @@
 
   programs.gamemode.enable = true;
 
+  services.ratbagd.enable = true;
+
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
 
   # For packages enabled in home/packages
   nixpkgs.config = {
-    permittedInsecurePackages = [ "cinny-unwrapped-4.2.1" "cinny-4.2.1" ];
+    permittedInsecurePackages = [ "cinny-unwrapped-4.2.2" "cinny-4.2.2" ];
     allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [ "steam" "steam-original" "steam-run" ];
+      builtins.elem (lib.getName pkg) [
+        "steam-unwrapped"
+        "steam"
+        "steam-original"
+        "steam-run"
+      ];
   };
 
   system.stateVersion = "24.05";
