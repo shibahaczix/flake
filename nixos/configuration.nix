@@ -93,14 +93,14 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  system.autoUpgrade = {
-    enable = true;
-    dates = "*-*-* 04:00:00";
-    persistent = true;
-    allowReboot = true;
-  };
+  #system.autoUpgrade = {
+  #  enable = true;
+  #  dates = "*-*-* 04:00:00";
+  #  persistent = true;
+  #  allowReboot = true;
+  #};
 
-  nix.settings.auto-optimise-store = true;
+  #nix.settings.auto-optimise-store = true;
   #nix.gc = {
   #  automatic = true;
   #  dates = "daily";
