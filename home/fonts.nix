@@ -2,7 +2,10 @@
 
 {
   fonts.fontconfig.enable = true;
-  home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
-  ];
+  home.packages = with pkgs;
+    [
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
+      })
+    ];
 }

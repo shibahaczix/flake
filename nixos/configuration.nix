@@ -93,19 +93,8 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  #system.autoUpgrade = {
-  #  enable = true;
-  #  dates = "*-*-* 04:00:00";
-  #  persistent = true;
-  #  allowReboot = true;
-  #};
-
-  #nix.settings.auto-optimise-store = true;
-  #nix.gc = {
-  #  automatic = true;
-  #  dates = "daily";
-  #  options = "--delete-older-than 1d";
-  #};
+  security.sudo-rs.enable = true;
+  security.sudo.enable = false;
 
   programs.nh = {
     enable = true;
@@ -113,9 +102,6 @@
     clean.extraArgs = "--keep-since 1d --keep 3";
     flake = "/home/shiba/flake";
   };
-
-  security.doas.enable = true;
-  security.sudo.enable = false;
 
   stylix = {
     enable = true;

@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   programs.eww = {
-    package = inputs.eww.packages.${pkgs.system}.eww
+    package = inputs.eww.packages.${pkgs.system}.eww;
     enable = true;
-    configDir = ;
+    configDir = ./eww;
   };
 }
