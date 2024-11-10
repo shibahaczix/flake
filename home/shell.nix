@@ -6,7 +6,7 @@
     fs = "fastfetch";
   };
 
-  programs.bash = { enable = true; };
+  programs.bash.enable = true;
 
   programs.fish = {
     enable = true;

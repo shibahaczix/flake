@@ -31,13 +31,26 @@
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
-    package = pkgs.niri_git;
+    package = inputs.niri-src.packages.${pkgs.system}.niri;
     settings = {
       spawn-at-startup = [
-        { command = [ "swww-daemon" ]; }
+        {
+          command = [ "swww-daemon" ];
+        }
+        #{ command = [ "eww" "open" "bar" ]; }
         {
           command =
             [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ];
+        }
+        {
+          command = [
+            "sh"
+            "-c"
+            ''
+              eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh -f);
+              export SSH_AUTH_SOCK;
+            ''
+          ];
         }
         { command = [ "xwayland-satellite" ]; }
       ];
@@ -56,9 +69,11 @@
         mouse = { accel-profile = "flat"; };
         keyboard = { xkb = { layout = "pl"; }; };
       };
+
       hotkey-overlay.skip-at-startup = true;
+
       binds = with config.lib.niri.actions;
-        let
+        let sh = spawn "sh" "-c";
         in {
           "Mod+Shift+Delete".action = show-hotkey-overlay;
           "Mod+Return".action.spawn = "${lib.getExe pkgs.kitty}";
@@ -67,15 +82,12 @@
           "Mod+Shift+C".action = screenshot-window;
           "Mod+Q".action = close-window;
           "Mod+F".action = maximize-column;
-          "Mod+J".action = spawn "swww" "img"
-            "/home/shiba/flake/home/wallpapers/wallpaper1.jpg"
-            "--transition-type" "center";
-          "Mod+K".action = spawn "swww" "img"
-            "/home/shiba/flake/home/wallpapers/wallpaper2.jpg"
-            "--transition-type" "center";
-          "Mod+L".action = spawn "swww" "img"
-            "/home/shiba/flake/home/wallpapers/wallpaper3.jpg"
-            "--transition-type" "center";
+          "Mod+J".action = sh
+            "swww img /home/shiba/flake/home/wallpapers/wallpaper1.jpg --transition-type center";
+          "Mod+K".action = sh
+            "swww img /home/shiba/flake/home/wallpapers/wallpaper2.jpg --transition-type center";
+          "Mod+L".action = sh
+            "swww img /home/shiba/flake/home/wallpapers/wallpaper3.jpg --transition-type center";
           "Mod+Minus".action = set-column-width "-10%";
           "Mod+Equal".action = set-column-width "+10%";
           "Mod+Shift+Minus".action = set-window-height "-10%";
@@ -103,6 +115,9 @@
           "Mod+shift+8".action = move-column-to-workspace 8;
           "Mod+shift+9".action = move-column-to-workspace 9;
         };
+      environment = {
+        DISPLAY = ":0"; # xwayland-satellite
+      };
       prefer-no-csd = true;
       window-rules = [{
         draw-border-with-background = false;

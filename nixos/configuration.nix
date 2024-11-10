@@ -4,14 +4,10 @@
   nix = {
     settings = {
       trusted-users = [ "shiba" ];
-      substituters = [
-        "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
-        "https://prismlauncher.cachix.org"
-      ];
+      substituters =
+        [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
       ];
     };
   };
@@ -32,7 +28,7 @@
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ ];
+    extraPackages = with pkgs; [ intel-media-sdk ];
   };
 
   programs.auto-cpufreq = {
@@ -108,19 +104,6 @@
     image = ./wallpaper.jpg;
   };
 
-  # niri-flake
-  services.gnome.gnome-keyring.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*";
-  };
-
   services.greetd = {
     enable = true;
     vt = 2;
@@ -132,15 +115,25 @@
     };
   };
 
+  # Niri stuff
+  services.gnome.gnome-keyring.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*";
+  };
+
   programs.gamemode.enable = true;
 
   services.ratbagd.enable = true;
 
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
 
-  # For packages enabled in home/packages
   nixpkgs.config = {
-    permittedInsecurePackages = [ "cinny-unwrapped-4.2.2" "cinny-4.2.2" ];
     allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [
         "steam-unwrapped"

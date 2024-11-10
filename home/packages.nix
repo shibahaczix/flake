@@ -9,7 +9,7 @@
     steam # Stean app
     steam-run # For running
     pamixer # Audio
-    cinny-desktop # Matrix client
+    element-desktop # Matrix client
     nautilus # File manager
     gimp # Paint
     baobab # Disk checker
