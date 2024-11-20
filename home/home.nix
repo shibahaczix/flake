@@ -12,16 +12,13 @@
   imports = [
     ./packages.nix
     ./git.nix
-    ./shell.nix
-    ./niri.nix
     ./fastfetch.nix
     ./htop.nix
-    ./fuzzel.nix
     ./kitty.nix
     ./stylix.nix
-    ./fonts.nix
+    ./niri.nix
+    ./shell.nix
     ./obs.nix
-    ./eww.nix
     ./helix.nix
     ./prismlauncher.nix
   ];

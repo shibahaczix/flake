@@ -1,6 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
+  # WM related
   imports = [ inputs.niri.homeModules.niri ];
 
   home.packages = with pkgs; [
@@ -14,9 +15,34 @@
 
   services.mako = {
     enable = true;
-    #font = "JetBrainsMono NF 10"; stylix
-    borderSize = 2;
+    font = "JetBrainsMono NF 10";
+    borderSize = 4;
     borderRadius = 5;
+    borderColor = "#95e6cbff";
+    backgroundColor = "#171717ff";
+  };
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        terminal = "kitty";
+        font = "JetBrainsMono NF";
+        line-height = 22;
+      };
+      colors.background = "171717ff";
+      colors.border = "95e6cbff";
+      colors.text = "ffffffff";
+      colors.selection = "#101010ff";
+      colors.selection-text = "#f0f0f0ff";
+      border.width = 4;
+    };
+  };
+
+  programs.eww = {
+    package = inputs.eww.packages.${pkgs.system}.eww;
+    enable = true;
+    configDir = ./eww;
   };
 
   services.gammastep = {
@@ -141,8 +167,8 @@
         ];
         default-column-width = { proportion = 1.0; };
         border = {
-          inactive.color = "rgb(80 80 80)";
-          active.color = "rgb(80 80 80)";
+          inactive.color = "#505050";
+          active.color = "#95e6cb";
         };
       };
     };

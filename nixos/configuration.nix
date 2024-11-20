@@ -22,7 +22,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
+  boot.kernelPackages = if pkgs.linuxPackages_cachyos-rc.kernel.version
+  > pkgs.linuxPackages_cachyos.kernel.version then
+    pkgs.linuxPackages_cachyos-rc
+  else
+    pkgs.linuxPackages_cachyos;
   chaotic.scx.enable = true; # By default uses scx_rustland scheduler
   chaotic.mesa-git.enable = true;
 

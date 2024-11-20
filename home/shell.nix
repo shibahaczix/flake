@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 
 {
+  # Shell related
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
