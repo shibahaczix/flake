@@ -27,7 +27,10 @@
       url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    base16.url = "github:Noodlez1232/base16.nix/slugify-fix"; # Fix
+    base16 = {
+      url = "github:Noodlez1232/base16.nix/slugify-fix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; # Fix
     stylix = {
       url = "github:danth/stylix";
       inputs.base16.follows = "base16"; # Fix

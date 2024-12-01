@@ -2,10 +2,11 @@
 
 {
   nix = {
+    package = pkgs.nixVersions.latest;
     settings = {
       trusted-users = [ "shiba" ];
       substituters =
-        [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
+        [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
@@ -22,12 +23,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
-  boot.kernelPackages = if pkgs.linuxPackages_cachyos-rc.kernel.version
-  > pkgs.linuxPackages_cachyos.kernel.version then
-    pkgs.linuxPackages_cachyos-rc
-  else
-    pkgs.linuxPackages_cachyos;
-  chaotic.scx.enable = true; # By default uses scx_rustland scheduler
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
   chaotic.mesa-git.enable = true;
 
   hardware.graphics = {
@@ -120,7 +116,6 @@
   };
 
   # Niri stuff
-  services.gnome.gnome-keyring.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -131,11 +126,11 @@
     config.common.default = "*";
   };
 
+  environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
+
   programs.gamemode.enable = true;
 
   services.ratbagd.enable = true;
-
-  environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
@@ -144,6 +139,7 @@
         "steam"
         "steam-original"
         "steam-run"
+        "discord-canary"
       ];
   };
 

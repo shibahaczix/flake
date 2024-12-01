@@ -48,6 +48,7 @@
   services.gammastep = {
     enable = true;
     provider = "manual";
+    # Desktop
     latitude = 52.2;
     longitude = 18.2;
   };
@@ -68,16 +69,16 @@
           command =
             [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ];
         }
-        {
-          command = [
-            "sh"
-            "-c"
-            ''
-              eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh -f);
-              export SSH_AUTH_SOCK;
-            ''
-          ];
-        }
+        #{
+        #  command = [
+        #    "sh"
+        #    "-c"
+        #    ''
+        #      eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh -f);
+        #      export SSH_AUTH_SOCK;
+        #    ''
+        #  ];
+        #}
         { command = [ "xwayland-satellite" ]; }
       ];
       outputs = {

@@ -60,10 +60,9 @@
   };
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs;
-    [
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
-      })
-    ];
+  home.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.droid-sans-mono
+  ];
 }
