@@ -9,7 +9,6 @@
     wl-clipboard
     wayland-utils
     wlr-randr
-    gamescope
     inputs.xwayland-satellite.packages.${pkgs.system}.xwayland-satellite
   ];
 

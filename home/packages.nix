@@ -17,12 +17,13 @@
     #godot_4 # Game engine
     mindustry-wayland # Game
     #lutris # Lutris
-    steam # Steam
-    steam-run # FHS
     mangohud # Mangohud
     mpv # Video player
     tmux # For ssh
     gimp # Paint
+    gamescope # Upscale for games
+    steam-run # FHS
+    (steam.override { extraPkgs = pkgs: [ ]; }) # Steam
     #wasabiwallet # Crypto wallet
     #kdenlive # Video editing
     #audacity # Sound editing
@@ -32,6 +33,6 @@
     #ventoy # Ventoy
     #caligula # USB image burner
     #ffmpeg # Video stuff
-    protonup-qt
+    protonup-qt # For managing Wine/Proton
   ];
 }

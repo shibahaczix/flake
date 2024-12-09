@@ -15,7 +15,6 @@
 
   imports = [
     inputs.chaotic.nixosModules.default
-    inputs.auto-cpufreq.nixosModules.default
     inputs.stylix.nixosModules.stylix
     ./hardware-configuration.nix
   ];
@@ -25,24 +24,11 @@
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
   chaotic.mesa-git.enable = true;
+  powerManagement.cpuFreqGovernor = "ondemand";
 
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [ intel-media-sdk ];
-  };
-
-  programs.auto-cpufreq = {
-    enable = true;
-    settings = {
-      charger = {
-        governor = "ondemand";
-        turbo = "auto";
-      };
-      battery = {
-        governor = "powersave";
-        turbo = "auto";
-      };
-    };
   };
 
   networking.hostName = "nixos";
@@ -128,9 +114,9 @@
 
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
 
-  programs.gamemode.enable = true;
-
   services.ratbagd.enable = true;
+
+  programs.gamemode.enable = true;
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
