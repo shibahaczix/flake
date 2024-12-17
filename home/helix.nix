@@ -265,7 +265,7 @@
           esc = [ "collapse_selection" ];
         };
       };
-      theme = "fleet_dark";
+      theme = "amberwood"; # fleet_dark
       editor.cursor-shape = {
         normal = "block";
         insert = "bar";

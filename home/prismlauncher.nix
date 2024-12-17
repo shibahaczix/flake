@@ -5,7 +5,7 @@
     [
       (inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {
         additionalPrograms = [ ffmpeg ];
-        jdks = [ zulu8 zulu17 zulu ];
+        jdks = [ zulu8 zulu17 zulu graalvm-ce ];
       })
     ];
   home.file = {

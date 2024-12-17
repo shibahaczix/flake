@@ -29,21 +29,21 @@
     }; # Fix
     stylix = {
       url = "github:danth/stylix";
-      inputs.base16.follows = "base16"; # Fix
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.base16.follows = "base16"; # Fix
     };
     helix = {
       url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     eww = {
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
