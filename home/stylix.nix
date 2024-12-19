@@ -13,6 +13,7 @@
       kitty.enable = false;
       fish.enable = false;
       fuzzel.enable = false;
+      btop.enable = false;
     };
 
     cursor = {

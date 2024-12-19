@@ -41,6 +41,7 @@
       "ctrl+shift+c" = "copy_to_clipboard";
       "ctrl+shift+v" = "paste_from_clipboard";
       "ctrl+x" = "clear_terminal scroll active";
+      "f11" = "toggle_fullscreen";
     };
   };
 }

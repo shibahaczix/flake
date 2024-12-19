@@ -13,7 +13,7 @@
     ./packages.nix
     ./git.nix
     ./fastfetch.nix
-    ./htop.nix
+    ./btop.nix
     ./kitty.nix
     ./stylix.nix
     ./niri.nix
