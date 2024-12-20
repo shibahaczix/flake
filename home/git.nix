@@ -6,5 +6,6 @@
     enable = true;
     userName = "shibahaczix";
     userEmail = "shibahaczix@gmail.com";
+    extraConfig.core.editor = "hx";
   };
 }
