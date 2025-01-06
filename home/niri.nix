@@ -57,7 +57,7 @@
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
-    package = inputs.niri-src.packages.${pkgs.system}.niri;
+    package = inputs.niri.packages.${pkgs.system}.niri-unstable;
     settings = {
       spawn-at-startup = [
         {
@@ -105,6 +105,7 @@
           "Mod+Return".action.spawn = "${lib.getExe pkgs.kitty}";
           "Mod+Space".action.spawn = "${lib.getExe pkgs.fuzzel}";
           "Mod+C".action = screenshot;
+          "Mod+V".action = toggle-window-floating;
           "Mod+Shift+C".action = screenshot-window;
           "Mod+Q".action = close-window;
           "Mod+F".action = maximize-column;

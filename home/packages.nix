@@ -26,6 +26,7 @@
     (steam.override { extraPkgs = pkgs: [ ]; }) # Steam
     #wasabiwallet # Crypto wallet
     #kdenlive # Video editing
+    losslesscut-bin # Lossless mp4 cutting
     #audacity # Sound editing
     #blender # 3D modeling
     amberol # Music player
