@@ -77,6 +77,12 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  # Distrobox
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   security.sudo-rs.enable = true;
   security.sudo.enable = false;
 

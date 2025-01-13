@@ -35,5 +35,6 @@
     #caligula # USB image burner
     #ffmpeg # Video stuff
     protonup-qt # For managing Wine/Proton
+    distrobox # For containers
   ];
 }
