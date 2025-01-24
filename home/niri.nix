@@ -148,6 +148,7 @@
       prefer-no-csd = true;
       window-rules = [{
         draw-border-with-background = false;
+
         geometry-corner-radius = let r = 8.0;
         in {
           top-left = r;
@@ -156,22 +157,29 @@
           bottom-right = r;
         };
         clip-to-geometry = true;
-      }];
-      layout = {
-        #gaps = 4;
-        #center-focused-column = "always";
-        preset-column-widths = [
-          { proportion = 0.33333; }
-          { proportion = 0.5; }
-          { proportion = 0.66667; }
-          { proportion = 1.0; }
-        ];
-        default-column-width = { proportion = 1.0; };
+
+        default-column-width.proportion = 1.0;
+
         border = {
           inactive.color = "#505050";
           active.color = "#95e6cb";
         };
-      };
+
+        # shadow = {
+        #   softness = 40;
+        #   spread = 5;
+        #   offset.x = 0;
+        #   offset.y = 5;
+        #   draw-behind-window = true;
+        #   color = "#00000064";
+        # };
+      }];
+      layout.preset-column-widths = [
+        { proportion = 0.33333; }
+        { proportion = 0.5; }
+        { proportion = 0.66667; }
+        { proportion = 1.0; }
+      ];
     };
   };
 }

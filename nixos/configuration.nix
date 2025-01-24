@@ -23,7 +23,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
-  chaotic.mesa-git.enable = true;
+  #chaotic.mesa-git.enable = true;
   powerManagement.cpuFreqGovernor = "ondemand";
   services.scx.package = pkgs.scx_git.full;
   services.scx.enable = true; # by default uses scx_rustland scheduler
