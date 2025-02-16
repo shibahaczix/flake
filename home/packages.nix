@@ -14,7 +14,7 @@
     element-desktop # Matrix client
     nautilus # File manager
     baobab # Disk checker
-    #godot_4 # Game engine
+    godot_4 # Game engine
     mindustry-wayland # Game
     #lutris # Lutris
     mangohud # Mangohud

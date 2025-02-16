@@ -54,10 +54,10 @@
 
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Fluent-Dark";
-      package = pkgs.fluent-icon-theme;
-    };
+    # iconTheme = { # Broken for now https://github.com/vinceliuice/Fluent-icon-theme/issues/96
+    #   name = "Fluent-Dark";
+    #   package = pkgs.fluent-icon-theme;
+    # };
   };
 
   fonts.fontconfig.enable = true;

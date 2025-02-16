@@ -7,7 +7,7 @@
     fs = "fastfetch";
   };
 
-  programs.bash.enable = true;
+  programs.bash.enable = true; # Makes it work in nix-shell and nix develop
 
   programs.fish = {
     enable = true;

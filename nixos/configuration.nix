@@ -78,6 +78,9 @@
     password = "123";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [ ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIsQp7jfO6Jjz1nNT4FF4zcCk3fQL6FR9WygfwqsOyOe shibahaczix@gmail.com"
+    ];
   };
 
   # QEMU
@@ -143,6 +146,8 @@
         "discord-canary"
       ];
   };
+
+  services.flatpak.enable = true;
 
   system.stateVersion = "25.05";
 }
