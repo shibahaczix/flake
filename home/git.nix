@@ -6,8 +6,9 @@
     enable = true;
     userName = "shibahaczix";
     userEmail = "shibahaczix@gmail.com";
-    extraConfig.core.editor = "hx";
     signing.format = "ssh";
+    signing.signByDefault = true;
     extraConfig.user.signingkey = "~/.ssh/id_ed25519";
+    extraConfig.core.editor = "hx";
   };
 }
