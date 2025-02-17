@@ -62,10 +62,12 @@
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.shiba = import ./home/home.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.shiba = import ./home/home.nix;
+              extraSpecialArgs = { inherit inputs; };
+            };
           }
         ];
       };

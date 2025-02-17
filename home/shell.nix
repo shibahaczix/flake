@@ -7,8 +7,8 @@
     fs = "fastfetch";
   };
 
-  programs.bash.enable =
-    true; # Makes starship work in nix-shell and nix develop
+  # Makes starship work in nix-shell and nix develop
+  programs.bash.enable = true;
 
   programs.fish = {
     enable = true;
