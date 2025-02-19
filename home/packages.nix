@@ -24,6 +24,18 @@
     gamescope # Upscale for games
     steam-run # FHS
     (steam.override { extraPkgs = pkgs: [ ]; }) # Steam
+    (vintagestory.overrideAttrs (oldAttrs: {
+      postInstall = oldAttrs.postInstall or "" + ''
+        cp ${
+          ./vintagestory/VintagestoryLib.dll
+        } $out/share/vintagestory/VintagestoryLib.dll
+      '';
+      preFixup = oldAttrs.preFixup or "" + ''
+        wrapProgram $out/bin/vintagestory \
+          --prefix LD_LIBRARY_PATH : ${pkgs.gtk3}/lib
+      '';
+    })) # Game
+
     #wasabiwallet # Crypto wallet
     #kdenlive # Video editing
     losslesscut-bin # Lossless mp4 cutting
