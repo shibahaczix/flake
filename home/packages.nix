@@ -35,7 +35,6 @@
           --prefix LD_LIBRARY_PATH : ${pkgs.gtk3}/lib
       '';
     })) # Game
-
     #wasabiwallet # Crypto wallet
     #kdenlive # Video editing
     losslesscut-bin # Lossless mp4 cutting
