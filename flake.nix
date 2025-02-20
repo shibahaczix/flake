@@ -19,14 +19,9 @@
       url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    base16 = {
-      url = "github:Noodlez1232/base16.nix/slugify-fix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.base16.follows = "base16";
     };
     helix = {
       url = "github:helix-editor/helix";
