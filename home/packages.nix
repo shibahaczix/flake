@@ -16,7 +16,7 @@
     baobab # Disk checker
     godot_4 # Game engine
     mindustry-wayland # Game
-    #lutris # Lutris
+    # lutris # Lutris
     mangohud # Mangohud
     mpv # Video player
     tmux # For ssh
@@ -35,16 +35,15 @@
           --prefix LD_LIBRARY_PATH : ${pkgs.gtk3}/lib
       '';
     })) # Game
-    #wasabiwallet # Crypto wallet
-    #kdenlive # Video editing
+    # kdenlive # Video editing
     losslesscut-bin # Lossless mp4 cutting
-    #audacity # Sound editing
-    #blender # 3D modeling
+    # audacity # Sound editing
+    # blender # 3D modeling
     amberol # Music player
-    #yt-dlp # Youtube downloader
-    #ventoy # Ventoy
-    #caligula # USB image burner
-    #ffmpeg # Video stuff
+    # yt-dlp # Youtube downloader
+    # ventoy # Ventoy
+    # caligula # USB image burner
+    # ffmpeg # Video stuff
     protonup-qt # For managing Wine/Proton
     distrobox # For containers
   ];
