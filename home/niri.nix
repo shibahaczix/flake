@@ -54,7 +54,6 @@
 
   home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
     package = inputs.niri.packages.${pkgs.system}.niri-unstable;

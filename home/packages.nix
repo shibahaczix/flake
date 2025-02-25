@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -47,4 +47,18 @@
     protonup-qt # For managing Wine/Proton
     distrobox # For containers
   ];
+
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam-unwrapped"
+        "steam"
+        "steam-original"
+        "steam-run"
+        "discord-canary"
+        "vintagestory"
+      ];
+    permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
+  };
+
 }

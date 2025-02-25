@@ -4,8 +4,8 @@
   home.packages = with pkgs;
     [
       (inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {
-        additionalPrograms = [ ];
-        jdks = [ jre8 jre17 jre21 temurin-jre-bin ];
+        # additionalPrograms = [ ];
+        # jdks = [ ];
       })
     ];
   home.file = {
