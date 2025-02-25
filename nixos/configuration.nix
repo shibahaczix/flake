@@ -133,19 +133,6 @@
 
   programs.gamemode.enable = true;
 
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "steam-unwrapped"
-        "steam"
-        "steam-original"
-        "steam-run"
-        "discord-canary"
-        "vintagestory"
-      ];
-    permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
-  };
-
   services.flatpak.enable = true;
 
   system.stateVersion = "25.05";
