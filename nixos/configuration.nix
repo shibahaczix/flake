@@ -1,8 +1,8 @@
 { pkgs, inputs, ... }:
 
 {
+  nix.package = pkgs.nixVersions.latest;
   nix = {
-    package = pkgs.nixVersions.latest;
     settings = {
       trusted-users = [ "shiba" ];
       substituters =
@@ -12,6 +12,7 @@
       ];
     };
   };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports = [
     inputs.chaotic.nixosModules.default
@@ -42,8 +43,6 @@
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "Europe/Warsaw";
 
