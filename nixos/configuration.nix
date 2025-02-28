@@ -76,7 +76,7 @@
     description = "shiba";
     password = "123";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ ];
+    # packages = with pkgs; [ ];
   };
 
   # QEMU

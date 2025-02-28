@@ -286,5 +286,6 @@
       auto-format = true;
       formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
     }];
+    extraPackages = with pkgs; [ nil ];
   };
 }
