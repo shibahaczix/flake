@@ -38,11 +38,11 @@
     };
   };
 
-  programs.eww = {
-    package = inputs.eww.packages.${pkgs.system}.eww;
-    enable = true;
-    configDir = ./eww;
-  };
+  # programs.eww = {
+  #   package = inputs.eww.packages.${pkgs.system}.eww;
+  #   enable = true;
+  #   configDir = ./eww;
+  # };
 
   services.gammastep = {
     enable = true;
@@ -62,21 +62,21 @@
         {
           command = [ "swww-daemon" ];
         }
-        #{ command = [ "eww" "open" "bar" ]; }
+        # { command = [ "eww" "open" "bar" ]; }
         {
           command =
             [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ];
         }
-        #{
-        #  command = [
-        #    "sh"
-        #    "-c"
-        #    ''
-        #      eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh -f);
-        #      export SSH_AUTH_SOCK;
-        #    ''
-        #  ];
-        #}
+        # {
+        #   command = [
+        #     "sh"
+        #     "-c"
+        #     ''
+        #       eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh -f);
+        #       export SSH_AUTH_SOCK;
+        #     ''
+        #   ];
+        # }
         { command = [ "xwayland-satellite" ]; }
       ];
       outputs = {
