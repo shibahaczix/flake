@@ -123,7 +123,7 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
-    config.common.default = "gtk";
+    config.common.default = "*";
   };
 
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
