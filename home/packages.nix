@@ -46,7 +46,7 @@
     # ffmpeg # Video stuff
     protonup-qt # For managing Wine/Proton
     distrobox # For containers
-    jetbrains.idea-community # For Java/Kotlin programming because anything else sucks
+    jetbrains.idea-community-bin # For Java/Kotlin programming because anything else sucks
   ];
 
   nixpkgs.config = {
