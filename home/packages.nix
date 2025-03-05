@@ -49,6 +49,16 @@
     jetbrains.idea-community-bin # For Java/Kotlin programming because anything else sucks
   ];
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      # Set Nautilus for directories and file handling
+      "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+      "x-scheme-handler/file" = [ "org.gnome.Nautilus.desktop" ];
+      "x-scheme-handler/trash" = [ "org.gnome.Nautilus.desktop" ];
+    };
+  };
+
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
       builtins.elem (lib.getName pkg) [
