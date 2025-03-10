@@ -61,9 +61,5 @@
   };
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.droid-sans-mono
-  ];
+  home.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 }
