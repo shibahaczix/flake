@@ -20,6 +20,7 @@
     ./shell.nix
     ./obs.nix
     ./helix.nix
+    ./zed.nix
     ./prismlauncher.nix
   ];
 

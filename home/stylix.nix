@@ -25,17 +25,17 @@
     fonts = {
       serif = {
         package = pkgs.jetbrains-mono;
-        name = "JetBrainsMono SemiBold";
+        name = "JetBrainsMono NF SemiBold";
       };
 
       sansSerif = {
         package = pkgs.jetbrains-mono;
-        name = "JetBrainsMono SemiBold";
+        name = "JetBrainsMono NF SemiBold";
       };
 
       monospace = {
         package = pkgs.jetbrains-mono;
-        name = "JetBrainsMono SemiBold";
+        name = "JetBrainsMono NF SemiBold";
       };
 
       emoji = {

@@ -164,14 +164,8 @@
           active.color = "#95e6cb";
         };
 
-        # shadow = {
-        #   softness = 40;
-        #   spread = 5;
-        #   offset.x = 0;
-        #   offset.y = 5;
-        #   draw-behind-window = true;
-        #   color = "#00000064";
-        # };
+        shadow.enable = true;
+
       }];
       layout.preset-column-widths = [
         { proportion = 0.33333; }
