@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ tig libsecret ];
+  home.packages = with pkgs; [ tig ];
   programs.git = {
     enable = true;
     userName = "shibahaczix";
@@ -10,6 +10,5 @@
     signing.signByDefault = true;
     extraConfig.user.signingkey = "~/.ssh/id_ed25519";
     extraConfig.core.editor = "hx";
-    extraConfig.credential.helper = "${pkgs.git}/bin/git-credential-libsecret";
   };
 }
