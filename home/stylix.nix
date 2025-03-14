@@ -14,6 +14,7 @@
       fish.enable = false;
       fuzzel.enable = false;
       btop.enable = false;
+      zed.enable = false;
     };
 
     cursor = {
