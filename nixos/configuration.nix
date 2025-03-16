@@ -133,6 +133,7 @@
 
   programs.gamemode.enable = true;
 
+  # For Sober
   services.flatpak.enable = true;
 
   # https://github.com/Riey/fontconfig-parser/pull/11
