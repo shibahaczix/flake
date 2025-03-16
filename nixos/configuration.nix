@@ -30,10 +30,10 @@
   services.scx.package = pkgs.scx_git.full;
   services.scx.enable = true; # by default uses scx_rustland scheduler
 
-  #chaotic.mesa-git = {
-  #  enable = true;
-  #  extraPackages = with pkgs; [ intel-media-sdk ];
-  #};
+  # chaotic.mesa-git = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [ intel-media-sdk ];
+  # };
 
   hardware.graphics = {
     enable = true;
@@ -68,7 +68,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # jack.enable = true;
   };
 
   users.users.shiba = {
@@ -94,6 +94,7 @@
 
   programs.nh = {
     enable = true;
+    package = inputs.nh.packages.${pkgs.system}.default;
     clean.enable = true;
     clean.extraArgs = "--keep-since 1d --keep 3";
     flake = "/home/shiba/flake";
@@ -133,6 +134,9 @@
   programs.gamemode.enable = true;
 
   services.flatpak.enable = true;
+
+  # https://github.com/Riey/fontconfig-parser/pull/11
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
   system.stateVersion = "25.05";
 }

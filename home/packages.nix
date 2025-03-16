@@ -47,6 +47,7 @@
     protonup-qt # For managing Wine/Proton
     distrobox # For containers
     jetbrains.idea-community-bin # For Java/Kotlin programming because anything else sucks
+    nix-melt # flake.lock viewer
   ];
 
   xdg.mimeApps = {

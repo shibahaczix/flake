@@ -5,6 +5,7 @@
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
+    zed = "zeditor";
   };
 
   # Makes starship work in nix-shell and nix develop

@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.chaotic.homeModules.default ];
   programs.zed-editor = {
     enable = true;
+    package = pkgs.zed-editor_git;
     extraPackages = with pkgs; [ nil nixd ];
     extensions = [ "nix" "toml" ];
     userSettings = {
@@ -17,7 +19,7 @@
       buffer_font_size = 15;
       hour_format = "hour24";
       auto_update = false;
-      buffer_font_family = "Noto Sans";
+      buffer_font_family = "JetBrainsMono Nerd Font";
       indent_guides = {
         enabled = true;
         line_width = 2;
@@ -25,7 +27,7 @@
       };
       terminal = {
         env = { TERM = "kitty"; };
-        font_family = "Noto Sans";
+        font_family = "JetBrainsMono Nerd Font";
         line_height = "comfortable";
         shell = "system";
       };
