@@ -5,7 +5,7 @@
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
-    zed = "zeditor";
+    ssh = "env TERM=xterm-256color ssh";
   };
 
   # Makes starship work in nix-shell and nix develop

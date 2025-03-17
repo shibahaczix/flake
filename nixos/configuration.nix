@@ -73,10 +73,11 @@
 
   users.users.shiba = {
     isNormalUser = true;
-    description = "shiba";
+    # description = "shiba";
     password = "123";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     # packages = with pkgs; [ ];
+    shell = pkgs.fish;
   };
 
   # QEMU
@@ -135,9 +136,6 @@
 
   # For Sober
   services.flatpak.enable = true;
-
-  # https://github.com/Riey/fontconfig-parser/pull/11
-  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
   system.stateVersion = "25.05";
 }
