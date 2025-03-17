@@ -77,7 +77,6 @@
     password = "123";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     # packages = with pkgs; [ ];
-    shell = pkgs.fish;
   };
 
   # QEMU
