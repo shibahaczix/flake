@@ -8,7 +8,7 @@
     ssh = "env TERM=xterm-256color ssh";
   };
 
-  # Makes starship work in nix-shell and nix develop
+  # Makes starship work on bash
   programs.bash.enable = true;
 
   programs.fish = {
