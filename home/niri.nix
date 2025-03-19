@@ -52,7 +52,7 @@
     longitude = 18.2;
   };
 
-  home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.niri = {
     # Enabled in NixOS to make screensharing work
