@@ -19,7 +19,6 @@
     # lutris # Lutris
     mangohud # Mangohud
     mpv # Video player
-    tmux # For ssh
     gimp # Paint
     gamescope # Upscale for games
     steam-run # FHS

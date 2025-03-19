@@ -8,9 +8,6 @@
     ssh = "env TERM=xterm-256color ssh";
   };
 
-  # Makes starship work on bash
-  programs.bash.enable = true;
-
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
