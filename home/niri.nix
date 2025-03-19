@@ -9,7 +9,7 @@
     wl-clipboard
     wayland-utils
     wlr-randr
-    inputs.niri.packages.${pkgs.system}.xwayland-satellite-unstable
+    inputs.niri.packages.${system}.xwayland-satellite-unstable
   ];
 
   services.mako = {

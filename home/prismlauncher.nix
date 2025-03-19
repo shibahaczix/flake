@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs;
-    [ inputs.prismlauncher.packages.${pkgs.system}.default ];
+    [ inputs.prismlauncher.packages.${system}.default ];
   home.file = {
     ".local/share/PrismLauncher/iconthemes".source = ./PrismLauncher/iconthemes;
     ".local/share/PrismLauncher/themes".source = ./PrismLauncher/themes;
