@@ -116,15 +116,9 @@
     };
   };
 
-  # Niri stuff
-  xdg.portal = {
+  programs.niri = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*";
+    package = inputs.niri.packages.${pkgs.system}.niri-unstable;
   };
 
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];

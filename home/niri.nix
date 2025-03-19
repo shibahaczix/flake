@@ -55,7 +55,7 @@
   home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   programs.niri = {
-    enable = true;
+    # Enabled in NixOS to make screensharing work
     package = inputs.niri.packages.${pkgs.system}.niri-unstable;
     settings = {
       spawn-at-startup = [
@@ -67,16 +67,6 @@
           command =
             [ "swww" "img" "/home/shiba/flake/home/wallpapers/wallpaper1.jpg" ];
         }
-        # {
-        #   command = [
-        #     "sh"
-        #     "-c"
-        #     ''
-        #       eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh -f);
-        #       export SSH_AUTH_SOCK;
-        #     ''
-        #   ];
-        # }
         { command = [ "xwayland-satellite" ]; }
       ];
       outputs = {
