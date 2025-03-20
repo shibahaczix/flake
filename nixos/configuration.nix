@@ -97,6 +97,7 @@
     enable = true;
     package = inputs.nh.packages.${pkgs.system}.default;
     clean.enable = true;
+    clean.dates = "weekly";
     clean.extraArgs = "--keep-since 1d --keep 3";
     flake = "/home/shiba/flake";
   };
