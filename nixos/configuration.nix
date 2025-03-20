@@ -123,6 +123,13 @@
     package = inputs.niri.packages.${pkgs.system}.niri-unstable;
   };
 
+  programs.ssh = {
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+    startAgent = true;
+  };
+
   # programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
