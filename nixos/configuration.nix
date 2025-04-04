@@ -138,8 +138,5 @@
 
   programs.gamemode.enable = true;
 
-  # For Sober
-  services.flatpak.enable = true;
-
   system.stateVersion = "25.05";
 }
