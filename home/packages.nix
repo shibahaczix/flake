@@ -48,6 +48,7 @@
     jetbrains.idea-community-bin # For Java/Kotlin programming because anything else sucks
     nix-melt # flake.lock viewer
     pavucontrol # Volume control
+    protontricks # For games
   ];
 
   xdg.mimeApps = {
