@@ -6,6 +6,7 @@
     g = "git";
     fs = "fastfetch";
     ssh = "env TERM=xterm-256color ssh";
+    rm = "rm -I";
   };
 
   programs.fish = {
