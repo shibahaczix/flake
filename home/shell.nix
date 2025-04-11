@@ -7,6 +7,7 @@
     fs = "fastfetch";
     ssh = "env TERM=xterm-256color ssh";
     rm = "rm -I";
+    ls = "eza";
   };
 
   programs.zoxide.enable = true;

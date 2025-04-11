@@ -49,6 +49,7 @@
     nix-melt # flake.lock viewer
     pavucontrol # Volume control
     protontricks # For games
+    eza
   ];
 
   xdg.mimeApps = {
