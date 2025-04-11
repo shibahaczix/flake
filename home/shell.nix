@@ -9,6 +9,8 @@
     rm = "rm -I";
   };
 
+  programs.zoxide.enable = true;
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
