@@ -50,6 +50,9 @@
     pavucontrol # Volume control
     protontricks # For games
     eza
+    bat
+    fd
+    ripgrep
   ];
 
   xdg.mimeApps = {
