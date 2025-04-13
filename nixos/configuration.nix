@@ -44,6 +44,8 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  console.font = "Lat2-Terminus16";
+
   time.timeZone = "Europe/Warsaw";
 
   i18n.defaultLocale = "en_US.UTF-8";
