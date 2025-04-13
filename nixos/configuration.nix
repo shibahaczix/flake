@@ -44,7 +44,10 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  console.font = "Lat2-Terminus16";
+  console = {
+    font = "ter-v32n";
+    packages = with pkgs; [ terminus_font ];
+  };
 
   time.timeZone = "Europe/Warsaw";
 
