@@ -44,11 +44,6 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  console = {
-    font = "ter-v32n";
-    packages = with pkgs; [ terminus_font ];
-  };
-
   time.timeZone = "Europe/Warsaw";
 
   i18n.defaultLocale = "en_US.UTF-8";
