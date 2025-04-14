@@ -85,7 +85,8 @@
     password = "123";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     # packages = with pkgs; [ ];
-    # shell = pkgs.fish; # I don't really need to have it as my login shell.
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
   };
 
   # QEMU
@@ -139,7 +140,7 @@
     startAgent = true;
   };
 
-  # programs.fish.enable = true;
+  # programs.fish.enable = true; # Breaks hm
 
   environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
 
