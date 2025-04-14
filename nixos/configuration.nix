@@ -21,9 +21,11 @@
   ];
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.initrd.kernelModules = [ "i915" ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
@@ -39,6 +41,12 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [ intel-media-sdk ];
+  };
+
+  console = {
+    packages = with pkgs; [ terminus_font ];
+    font = "ter-v32n";
+    earlySetup = true;
   };
 
   networking.hostName = "nixos";
@@ -105,6 +113,7 @@
   stylix = {
     enable = true;
     image = ./wallpaper.jpg;
+    targets.console.enable = false;
   };
 
   services.greetd = {
