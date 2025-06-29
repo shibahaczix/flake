@@ -1,14 +1,18 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, lib, ... }:
 
 {
   nix.package = pkgs.nixVersions.latest;
   nix = {
     settings = {
       trusted-users = [ "shiba" ];
-      substituters =
-        [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+        "https://prismlauncher.cachix.org"
+      ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
       ];
     };
   };
@@ -25,23 +29,41 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
-  boot.initrd.kernelModules = [ "i915" ];
+
+  # boot.initrd.kernelModules = [ "i915" ];
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
-  services.scx.package = pkgs.scx_git.full;
+  # services.scx.package = pkgs.scx_git.full; # Broken
   services.scx.enable = true; # by default uses scx_rustland scheduler
-
-  # chaotic.mesa-git = {
-  #   enable = true;
-  #   extraPackages = with pkgs; [ intel-media-sdk ];
-  # };
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ intel-media-sdk ];
   };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    open = false;
+  };
+
+  boot.kernelParams = [ "pci=realloc" "rebar=1" ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-x11"
+      "nvidia-settings"
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
+    ];
 
   console = {
     packages = with pkgs; [ terminus_font ];
@@ -83,20 +105,10 @@
     isNormalUser = true;
     # description = "shiba";
     password = "123";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     # packages = with pkgs; [ ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
-  };
-
-  # QEMU
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-
-  # Distrobox
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
   };
 
   security.sudo-rs.enable = true;
@@ -117,12 +129,14 @@
     targets.console.enable = false;
   };
 
+  programs.steam = { enable = true; };
+
   services.greetd = {
     enable = true;
     vt = 2;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri-session";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd niri-session";
         user = "greeter";
       };
     };
@@ -137,7 +151,7 @@
     extraConfig = ''
       AddKeysToAgent yes
     '';
-    startAgent = true;
+    # startAgent = true; # Niri conflict?
   };
 
   # programs.fish.enable = true; # Breaks hm

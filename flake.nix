@@ -24,24 +24,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:usagi-flow/evil-helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # rust-overlay = {
-    #   url = "github:oxalica/rust-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # eww = {
-    #   url = "github:elkowar/eww";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.rust-overlay.follows = "rust-overlay";
-    # };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nvf = {
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

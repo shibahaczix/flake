@@ -14,26 +14,12 @@
     element-desktop # Matrix client
     nautilus # File manager
     baobab # Disk checker
-    godot_4 # Game engine
+    # godot_4 # Game engine
     mindustry-wayland # Game
     # lutris # Lutris
     mangohud # Mangohud
     mpv # Video player
     gimp # Paint
-    gamescope # Upscale for games
-    steam-run # FHS
-    (steam.override { extraPkgs = pkgs: [ ]; }) # Steam
-    (vintagestory.overrideAttrs (oldAttrs: {
-      postInstall = oldAttrs.postInstall or "" + ''
-        cp ${
-          ./vintagestory/VintagestoryLib.dll
-        } $out/share/vintagestory/VintagestoryLib.dll
-      '';
-      preFixup = oldAttrs.preFixup or "" + ''
-        wrapProgram $out/bin/vintagestory \
-          --prefix LD_LIBRARY_PATH : ${pkgs.gtk3}/lib
-      '';
-    })) # Game
     # kdenlive # Video editing
     losslesscut-bin # Lossless mp4 cutting
     # audacity # Sound editing
@@ -44,7 +30,6 @@
     # caligula # USB image burner
     # ffmpeg # Video stuff
     protonup-qt # For managing Wine/Proton
-    distrobox # For containers
     jetbrains.idea-community-bin # For Java/Kotlin programming because anything else sucks
     nix-melt # flake.lock viewer
     pavucontrol # Volume control
@@ -53,7 +38,21 @@
     bat
     fd
     ripgrep
+    fzf
+    vlc
+    quickemu
+    conceal
   ];
+
+  xdg.desktopEntries = {
+    "jetbrains-idea-custom" = {
+      name = "IntelliJ IDEA CE (Wayland)";
+      icon = "idea";
+      exec = "idea-community -Dawt.toolkit.name=WLToolkit";
+      categories = [ "Development" "IDE" ];
+      terminal = false;
+    };
+  }; # Makes IDEA Community use Wayland
 
   xdg.mimeApps = {
     enable = true;
@@ -67,15 +66,8 @@
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "steam-unwrapped"
-        "steam"
-        "steam-original"
-        "steam-run"
-        "discord-canary"
-        "vintagestory"
-      ];
-    permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
+      builtins.elem (lib.getName pkg) [ "discord-canary" ];
+    # permittedInsecurePackages = [ ];
   };
 
 }

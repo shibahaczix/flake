@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Style related
   stylix = {
     polarity = "dark";
@@ -14,6 +12,7 @@
       fish.enable = false;
       fuzzel.enable = false;
       btop.enable = false;
+      nvf.enable = false;
     };
 
     cursor = {
@@ -61,5 +60,5 @@
   };
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
+  home.packages = with pkgs; [nerd-fonts.jetbrains-mono];
 }

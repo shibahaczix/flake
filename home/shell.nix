@@ -6,7 +6,6 @@
     g = "git";
     fs = "fastfetch";
     ssh = "env TERM=xterm-256color ssh";
-    rm = "rm -I";
     ls = "eza";
     cat = "bat --style=plain --theme=ansi";
   };

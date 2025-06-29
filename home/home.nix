@@ -20,6 +20,7 @@
     ./shell.nix
     ./obs.nix
     ./helix.nix
+    ./neovim.nix
     ./prismlauncher.nix
   ];
 
