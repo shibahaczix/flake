@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   home.username = "shiba";
   home.homeDirectory = "/home/shiba";
 
@@ -19,13 +17,12 @@
     ./niri.nix
     ./shell.nix
     ./obs.nix
-    ./helix.nix
     ./neovim.nix
     ./prismlauncher.nix
   ];
 
   # Symlink example
-  # home.file.".zshrc".source = ./zshrc; 
+  # home.file.".zshrc".source = ./zshrc;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

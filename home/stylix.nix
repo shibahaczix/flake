@@ -13,6 +13,7 @@
       fuzzel.enable = false;
       btop.enable = false;
       nvf.enable = false;
+      tmux.enable = false;
     };
 
     cursor = {

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [inputs.nvf.homeManagerModules.default];
@@ -18,6 +19,13 @@
         lazy.enable = true;
         visuals.indent-blankline.enable = true;
         lsp.formatOnSave = true;
+
+        theme = {
+          enable = true;
+          name = "catppuccin";
+          style = "mocha";
+          transparent = false;
+        };
 
         telescope.enable = true;
         statusline.lualine.enable = true;
