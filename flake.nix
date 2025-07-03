@@ -23,10 +23,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:usagi-flow/evil-helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,9 +37,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
@@ -52,7 +52,7 @@
             # useGlobalPkgs = true;
             useUserPackages = true;
             users.shiba = import ./home/home.nix;
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {inherit inputs;};
           };
         }
       ];

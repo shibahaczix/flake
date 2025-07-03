@@ -27,6 +27,14 @@
           transparent = false;
         };
 
+        luaConfigRC.colorscheme =
+          /*
+          lua
+          */
+          ''
+            vim.cmd.colorscheme("your-scheme")
+          '';
+
         telescope.enable = true;
         statusline.lualine.enable = true;
         autocomplete = {

@@ -16,7 +16,6 @@
     mouse = true;
     extraConfig = ''
       set-option -g status off
-      set-option -g default-window 1
       bind -n M-1 select-window -t 1
       bind -n M-2 select-window -t 2
       bind -n M-3 select-window -t 3
@@ -27,19 +26,24 @@
       bind -n M-8 select-window -t 8
       bind -n M-9 select-window -t 9
       bind -n M-0 select-window -t 0
-      bind -n M-q run-shell 'tmux kill-session -t base'
+      bind -n M-q detach
     '';
     plugins = with pkgs.tmuxPlugins; [
       cpu
       {
         plugin = resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        extraConfig = ''
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-dir '~/.tmux/resurrect'
+        '';
       }
       {
         plugin = continuum;
         extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '60' # minutes
+          set -g @continuum-restore 'on'       # restore on tmux start
+          set -g @continuum-boot 'on'          # auto-restore after reboot
+          set -g @continuum-save-interval 5    # autosave every 5 minutes
+          set -g @continuum-save-on-exit 'on'  # save immediately before tmux exits
         '';
       }
     ];
@@ -50,6 +54,7 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+
       tmux has-session -t base > /dev/null 2>&1
       or begin
       tmux new-session -d -s base -n 1 > /dev/null 2>&1
