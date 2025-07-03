@@ -13,7 +13,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DB04-C9BA";
+    device = "/dev/sda1";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
   };
