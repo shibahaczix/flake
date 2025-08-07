@@ -4,7 +4,9 @@
   ...
 }: {
   home.packages = with pkgs; [
-    inputs.prismlauncher.packages.${pkgs.system}.default
+    (prismlauncher.override {
+      jdks = [jdk8 jdk17 jdk21 jdk24 temurin-jre-bin-24];
+    })
   ];
   home.file = {
     ".local/share/PrismLauncher/iconthemes".source = ./PrismLauncher/iconthemes;

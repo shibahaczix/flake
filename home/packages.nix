@@ -18,22 +18,23 @@
     nautilus # File manager
     baobab # Disk checker
     # godot_4 # Game engine
-    mindustry-wayland # Game
+    # mindustry-wayland # Game
     # lutris # Lutris
     mangohud # Mangohud
-    mpv # Video player
+    # mpv # Video player
     gimp # Paint
     # kdenlive # Video editing
     losslesscut-bin # Lossless mp4 cutting
     # audacity # Sound editing
     # blender # 3D modeling
-    amberol # Music player
+    # amberol # Music player
     # yt-dlp # Youtube downloader
     # ventoy # Ventoy
     # caligula # USB image burner
     # ffmpeg # Video stuff
-    protonup-qt # For managing Wine/Proton
-    jetbrains.idea-community-bin # For Java/Kotlin programming because anything else sucks
+    #protonup-qt # For managing Wine/Proton
+    protonplus
+    #jetbrains.idea-community # For Java/Kotlin programming because anything else sucks
     nix-melt # flake.lock viewer
     pavucontrol # Volume control
     protontricks # For games
@@ -45,6 +46,9 @@
     vlc
     quickemu
     conceal
+    mission-center
+    file-roller
+    gnome-text-editor
   ];
 
   xdg.desktopEntries = {
@@ -71,6 +75,7 @@
       "inode/directory" = ["org.gnome.Nautilus.desktop"];
       "x-scheme-handler/file" = ["org.gnome.Nautilus.desktop"];
       "x-scheme-handler/trash" = ["org.gnome.Nautilus.desktop"];
+      "x-scheme-handler/terminal" = ["kitty.desktop"];
     };
   };
 

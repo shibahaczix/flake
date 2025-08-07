@@ -1,10 +1,14 @@
-{ pkgs, inputs, config, lib, ... }:
-
 {
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}: {
   nix.package = pkgs.nixVersions.latest;
   nix = {
     settings = {
-      trusted-users = [ "shiba" ];
+      trusted-users = ["shiba"];
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -16,7 +20,7 @@
       ];
     };
   };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   imports = [
     inputs.chaotic.nixosModules.default
@@ -27,38 +31,34 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "bcachefs" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
   # boot.initrd.kernelModules = [ "i915" ];
-  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" ];
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
   # services.scx.package = pkgs.scx_git.full; # Broken
-  services.scx.enable = true; # by default uses scx_rustland scheduler
+  #services.scx.enable = true; # by default uses scx_rustland scheduler
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-    modesetting.enable = true;
-    nvidiaSettings = true;
-    open = false;
-  };
-
-  boot.kernelParams = [ "pci=realloc" "rebar=1" ];
+  boot.initrd.kernelModules = ["amdgpu"];
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
+  boot.kernelParams = ["radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1"];
+  hardware.graphics.extraPackages = with pkgs; [
+    amdvlk
+  ];
+  # For 32 bit applications
+  hardware.graphics.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
-      "nvidia-x11"
-      "nvidia-settings"
       "steam"
       "steam-original"
       "steam-unwrapped"
@@ -66,7 +66,7 @@
     ];
 
   console = {
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     font = "ter-v32n";
     earlySetup = true;
   };
@@ -105,7 +105,7 @@
     isNormalUser = true;
     # description = "shiba";
     password = "123";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     # packages = with pkgs; [ ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
@@ -116,7 +116,6 @@
 
   programs.nh = {
     enable = true;
-    package = inputs.nh.packages.${pkgs.system}.default;
     clean.enable = true;
     clean.dates = "weekly";
     clean.extraArgs = "--keep-since 1d --keep 3";
@@ -129,11 +128,10 @@
     targets.console.enable = false;
   };
 
-  programs.steam = { enable = true; };
+  programs.steam = {enable = true;};
 
   services.greetd = {
     enable = true;
-    vt = 2;
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd niri-session";
@@ -156,7 +154,9 @@
 
   # programs.fish.enable = true; # Breaks hm
 
-  environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
+  environment.systemPackages = with pkgs; [
+    uutils-coreutils-noprefix
+  ];
 
   services.ratbagd.enable = true;
 

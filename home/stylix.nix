@@ -7,13 +7,11 @@
     targets = {
       gtk.enable = true;
       mako.enable = false;
-      helix.enable = false;
       kitty.enable = false;
       fish.enable = false;
       fuzzel.enable = false;
       btop.enable = false;
       nvf.enable = false;
-      tmux.enable = false;
     };
 
     cursor = {
