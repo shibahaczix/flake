@@ -29,6 +29,7 @@
             enable = true;
             crates.enable = true;
           };
+          clang.enable = true;
         };
         lazy.enable = true;
         visuals.indent-blankline.enable = true;
@@ -44,7 +45,7 @@
           enable = true;
           name = "catppuccin";
           style = "mocha";
-          transparent = false;
+          transparent = true;
         };
         treesitter.enable = true;
         utility = {
@@ -64,7 +65,7 @@
             navbuddy.enable = true;
           };
           smartcolumn = {
-            enable = true;
+            enable = false;
             setupOpts.custom_colorcolumn = {
               # this is a freeform module, it's `buftype = int;` for configuring column position
               nix = "120";

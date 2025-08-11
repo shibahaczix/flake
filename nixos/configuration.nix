@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   lib,
-  config,
   ...
 }: {
   nix.package = pkgs.nixVersions.latest;
@@ -12,11 +11,9 @@
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
-        "https://prismlauncher.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
       ];
     };
   };
@@ -28,17 +25,12 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.consoleMode = "max";
+  boot.loader.limine.enable = true;
+  boot.loader.limine.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
-  # boot.initrd.kernelModules = [ "i915" ];
-
   powerManagement.cpuFreqGovernor = "ondemand";
-
-  # services.scx.package = pkgs.scx_git.full; # Broken
-  #services.scx.enable = true; # by default uses scx_rustland scheduler
 
   hardware.graphics = {
     enable = true;
@@ -49,13 +41,13 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["amdgpu"];
   boot.kernelParams = ["radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1"];
-  hardware.graphics.extraPackages = with pkgs; [
-    amdvlk
-  ];
+  #hardware.graphics.extraPackages = with pkgs; [
+  #  amdvlk
+  #];
   # For 32 bit applications
-  hardware.graphics.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
+  #hardware.graphics.extraPackages32 = with pkgs; [
+  #  driversi686Linux.amdvlk
+  #];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -111,9 +103,6 @@
     ignoreShellProgramCheck = true;
   };
 
-  security.sudo-rs.enable = true;
-  security.sudo.enable = false;
-
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -128,39 +117,70 @@
     targets.console.enable = false;
   };
 
-  programs.steam = {enable = true;};
+  programs.steam = {
+    enable = true;
+  };
+
+  programs = {
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      extraPackages = with pkgs; [
+        grim
+        slurp
+        wl-clipboard
+        sov
+      ];
+      package = pkgs.swayfx;
+    };
+    xwayland.enable = true;
+  };
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd niri-session";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd sway";
         user = "greeter";
       };
     };
   };
 
-  programs.niri = {
+  xdg.portal = {
     enable = true;
-    package = inputs.niri.packages.${pkgs.system}.niri-unstable;
+    xdgOpenUsePortal = true;
+    wlr.enable = true;
+    config = {
+      common = {
+        default = ["wlr"];
+      };
+      sway = {
+        default = ["gtk"];
+      };
+    };
   };
 
   programs.ssh = {
     extraConfig = ''
       AddKeysToAgent yes
     '';
-    # startAgent = true; # Niri conflict?
+    startAgent = true;
   };
 
   # programs.fish.enable = true; # Breaks hm
 
   environment.systemPackages = with pkgs; [
-    uutils-coreutils-noprefix
+    #(gamescope.overrideAttrs
+    #  (oldAttrs: {
+    #    patches = (oldAttrs.patches or []) ++ [./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff];
+    #  }))
   ];
 
   services.ratbagd.enable = true;
 
   programs.gamemode.enable = true;
+
+  services.flatpak.enable = true;
 
   system.stateVersion = "25.05";
 }

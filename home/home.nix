@@ -14,7 +14,7 @@
     ./btop.nix
     ./kitty.nix
     ./stylix.nix
-    ./niri.nix
+    ./swayfx.nix
     ./shell.nix
     ./obs.nix
     ./neovim.nix
