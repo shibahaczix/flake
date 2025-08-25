@@ -30,6 +30,8 @@
     conceal
     file-roller
     gnome-text-editor
+    adwsteamgtk
+    nvtopPackages.amd
   ];
 
   xdg.desktopEntries = {

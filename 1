@@ -11,28 +11,15 @@
     wrapperFeatures.gtk = true;
     checkConfig = false;
     config = {
-      defaultWorkspace = "workspace number 1";
+      defaultWorkspace = "1";
 
       output = {
-        "*" = {
-          bg = "~/flake/home/wallpapers/wallpaper1.jpg fill";
-          max_render_time = "off";
-          allow_tearing = "yes";
-        };
         "HDMI-A-1" = {
           resolution = "1920x1080";
-          position = "1920,0";
+          position = "1920,1";
           mode = "1920x1080@73.095592Hz";
+          allow_tearing = "yes";
         };
-      };
-
-      bars = [];
-      terminal = [];
-      menu = [];
-
-      window = {
-        border = 3;
-        titlebar = false;
       };
 
       gaps = {
@@ -43,8 +30,9 @@
       input = {
         "*" = {
           xkb_layout = "pl";
+        };
+        "HDMI-A-1" = {
           accel_profile = "flat";
-          pointer_accel = "0";
         };
       };
 
@@ -53,8 +41,6 @@
         {command = "systemctl --user restart xdg-desktop-portal-wlr.service";}
         {command = "gammastep output *";}
       ];
-
-      floating.modifier = "Mod4";
 
       keybindings = let
         mod = "Mod4";
@@ -99,46 +85,17 @@
 
         "Print" = "exec grim -g \"$(slurp)\" -t png - | wl-copy -t image/png";
       };
-
-      colors = {
-        focused = {
-          border = "#5e81ac";
-          background = "#3b4252";
-          text = "#eceff4";
-          indicator = "#88c0d0";
-          childBorder = "#5e81ac";
-        };
-
-        unfocused = {
-          border = "#4c566a";
-          background = "#2e3440";
-          text = "#d8dee9";
-          indicator = "#81a1c1";
-          childBorder = "#4c566a";
-        };
-
-        focusedInactive = {
-          border = "#434c5e";
-          background = "#2e3440";
-          text = "#d8dee9";
-          indicator = "#5e81ac";
-          childBorder = "#434c5e";
-        };
-
-        urgent = {
-          border = "#bf616a";
-          background = "#3b4252";
-          text = "#eceff4";
-          indicator = "#bf616a";
-          childBorder = "#bf616a";
-        };
-      };
     };
 
     extraConfig = ''
       shadows enable
       blur enable
       corner_radius 12
+
+      client.focused          #5e81ac #3b4252 #eceff4 #88c0d0
+      client.unfocused        #4c566a #2e3440 #d8dee9 #81a1c1
+      client.focused_inactive #434c5e #2e3440 #d8dee9 #5e81ac
+      client.urgent           #bf616a #3b4252 #eceff4 #bf616a
     '';
   };
 

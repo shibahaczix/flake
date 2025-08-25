@@ -23,6 +23,11 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #fht-compositor = {
+    #  url = "github:nferhat/fht-compositor";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.rust-overlay.follows = "";
+    #};
   };
 
   outputs = {

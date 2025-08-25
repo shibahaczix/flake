@@ -12,6 +12,7 @@
       fuzzel.enable = false;
       btop.enable = false;
       nvf.enable = false;
+      sway.enable = false;
     };
 
     cursor = {

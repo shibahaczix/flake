@@ -22,11 +22,15 @@
   imports = [
     inputs.chaotic.nixosModules.default
     inputs.stylix.nixosModules.stylix
+    #inputs.fht-compositor.nixosModules.default
     ./hardware-configuration.nix
   ];
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
+  boot.loader.limine.style.wallpapers = [
+    (builtins.toString ./craft.jpg)
+  ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
@@ -36,6 +40,7 @@
     enable = true;
     enable32Bit = true;
   };
+  #chaotic.mesa-git.enable = true;
 
   boot.initrd.kernelModules = ["amdgpu"];
   services.xserver.enable = true;
@@ -125,12 +130,6 @@
     sway = {
       enable = true;
       wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [
-        grim
-        slurp
-        wl-clipboard
-        sov
-      ];
       package = pkgs.swayfx;
     };
     xwayland.enable = true;
@@ -164,17 +163,18 @@
     extraConfig = ''
       AddKeysToAgent yes
     '';
-    startAgent = true;
+    #startAgent = true;
   };
 
   # programs.fish.enable = true; # Breaks hm
 
   environment.systemPackages = with pkgs; [
-    #(gamescope.overrideAttrs
-    #  (oldAttrs: {
-    #    patches = (oldAttrs.patches or []) ++ [./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff];
-    #  }))
+    (gamescope_git.overrideAttrs
+      (oldAttrs: {
+        patches = (oldAttrs.patches or []) ++ [./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff];
+      }))
   ];
+  #programs.fht-compositor.enable = true;
 
   services.ratbagd.enable = true;
 
