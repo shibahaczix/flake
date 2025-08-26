@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # Style related
   stylix = {
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/material-darker.yaml";

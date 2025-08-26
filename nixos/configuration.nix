@@ -36,11 +36,12 @@
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-  #chaotic.mesa-git.enable = true;
+  #hardware.graphics = {
+  #  enable = true;
+  #  enable32Bit = true;
+  #};
+  #environment.variables.AMD_VULKAN_ICD = "RADV";
+  chaotic.mesa-git.enable = true;
 
   boot.initrd.kernelModules = ["amdgpu"];
   services.xserver.enable = true;
@@ -124,6 +125,21 @@
 
   programs.steam = {
     enable = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs':
+        with pkgs'; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+        ];
+    };
   };
 
   programs = {
@@ -139,7 +155,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet -r --cmd sway";
         user = "greeter";
       };
     };

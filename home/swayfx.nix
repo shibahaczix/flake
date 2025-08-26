@@ -3,6 +3,9 @@
     grim
     slurp
     wl-clipboard
+    wlr-randr
+    mesa-demos
+    vulkan-tools
   ];
 
   wayland.windowManager.sway = {
@@ -98,6 +101,7 @@
         "${mod}+v" = "floating toggle";
 
         "Print" = "exec grim -g \"$(slurp)\" -t png - | wl-copy -t image/png";
+        "${mod}+Print" = "exec grim -o HDMI-A-1 -t png - | wl-copy -t image/png";
       };
 
       colors = {

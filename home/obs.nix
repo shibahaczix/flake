@@ -5,6 +5,8 @@
       wlrobs
       obs-backgroundremoval
       obs-pipewire-audio-capture
+      obs-gstreamer
+      obs-vkcapture
     ];
   };
 }

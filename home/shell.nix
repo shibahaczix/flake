@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # Shell related
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
