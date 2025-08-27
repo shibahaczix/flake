@@ -51,20 +51,11 @@
     };
   };
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      # Set Nautilus for directories and file handling
-      "inode/directory" = ["org.gnome.Nautilus.desktop"];
-      "x-scheme-handler/file" = ["org.gnome.Nautilus.desktop"];
-      "x-scheme-handler/trash" = ["org.gnome.Nautilus.desktop"];
-      "x-scheme-handler/terminal" = ["kitty.desktop"];
-    };
-  };
-
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) ["discord-canary"];
+      builtins.elem (lib.getName pkg) [
+        "discord-canary"
+      ];
     # permittedInsecurePackages = [ ];
   };
 }

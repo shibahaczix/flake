@@ -43,14 +43,13 @@
   #environment.variables.AMD_VULKAN_ICD = "RADV";
   chaotic.mesa-git.enable = true;
 
-  boot.initrd.kernelModules = ["amdgpu"];
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = ["amdgpu"];
+  #boot.initrd.kernelModules = ["amdgpu"];
+  #services.xserver.enable = true;
+  #services.xserver.videoDrivers = ["amdgpu"];
   boot.kernelParams = ["radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1"];
   #hardware.graphics.extraPackages = with pkgs; [
   #  amdvlk
   #];
-  # For 32 bit applications
   #hardware.graphics.extraPackages32 = with pkgs; [
   #  driversi686Linux.amdvlk
   #];
@@ -125,21 +124,6 @@
 
   programs.steam = {
     enable = true;
-    package = pkgs.steam.override {
-      extraPkgs = pkgs':
-        with pkgs'; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-        ];
-    };
   };
 
   programs = {
@@ -151,15 +135,7 @@
     xwayland.enable = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet -r --cmd sway";
-        user = "greeter";
-      };
-    };
-  };
+  services.displayManager.ly.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -185,11 +161,12 @@
   # programs.fish.enable = true; # Breaks hm
 
   environment.systemPackages = with pkgs; [
-    (gamescope_git.overrideAttrs
-      (oldAttrs: {
-        patches = (oldAttrs.patches or []) ++ [./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff];
-      }))
+    (pkgs.gamescope_git.overrideAttrs
+      (oldAttrs: {patches = (oldAttrs.patches or []) ++ [./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff];}))
+    lact
   ];
+  systemd.packages = with pkgs; [lact];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
   #programs.fht-compositor.enable = true;
 
   services.ratbagd.enable = true;

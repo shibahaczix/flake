@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.nvf.homeManagerModules.default];
 
   programs.nvf = {
