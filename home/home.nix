@@ -17,7 +17,7 @@
     ./swayfx.nix
     ./shell.nix
     ./obs.nix
-    ./neovim.nix
+    ./helix.nix
     ./prismlauncher.nix
   ];
 

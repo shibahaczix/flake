@@ -6,7 +6,7 @@
       shell = "fish";
       confirm_os_window_close = 0;
       cursor_trail = 1;
-      font_family = "JetBrainsMono NF";
+      font_family = "JetBrainsMono NF Regular";
       bold_font = "auto";
       italic_font = "auto";
       bold_italic_font = "auto";

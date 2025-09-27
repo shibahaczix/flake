@@ -1,36 +1,26 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  ...
-}: {
+{ pkgs, inputs, lib, ... }: {
   nix.package = pkgs.nixVersions.latest;
   nix = {
     settings = {
-      trusted-users = ["shiba"];
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org/"
-      ];
+      trusted-users = [ "shiba" ];
+      substituters =
+        [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports = [
     inputs.chaotic.nixosModules.default
     inputs.stylix.nixosModules.stylix
-    #inputs.fht-compositor.nixosModules.default
     ./hardware-configuration.nix
   ];
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
-  boot.loader.limine.style.wallpapers = [
-    (builtins.toString ./craft.jpg)
-  ];
+  boot.loader.limine.style.wallpapers = [ (builtins.toString ./craft.jpg) ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
@@ -41,18 +31,15 @@
   #  enable32Bit = true;
   #};
   #environment.variables.AMD_VULKAN_ICD = "RADV";
+  hardware.amdgpu.overdrive.enable = true;
   chaotic.mesa-git.enable = true;
 
-  #boot.initrd.kernelModules = ["amdgpu"];
-  #services.xserver.enable = true;
-  #services.xserver.videoDrivers = ["amdgpu"];
-  boot.kernelParams = ["radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1"];
-  #hardware.graphics.extraPackages = with pkgs; [
-  #  amdvlk
-  #];
-  #hardware.graphics.extraPackages32 = with pkgs; [
-  #  driversi686Linux.amdvlk
-  #];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  boot.kernelParams =
+    [ "radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1" ];
+  hardware.amdgpu.overdrive.ppfeaturemask = "0xffffffff";
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -63,7 +50,7 @@
     ];
 
   console = {
-    packages = with pkgs; [terminus_font];
+    packages = with pkgs; [ terminus_font ];
     font = "ter-v32n";
     earlySetup = true;
   };
@@ -102,7 +89,7 @@
     isNormalUser = true;
     # description = "shiba";
     password = "123";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [ "networkmanager" "wheel" ];
     # packages = with pkgs; [ ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
@@ -122,9 +109,7 @@
     targets.console.enable = false;
   };
 
-  programs.steam = {
-    enable = true;
-  };
+  programs.steam = { enable = true; };
 
   programs = {
     sway = {
@@ -142,12 +127,8 @@
     xdgOpenUsePortal = true;
     wlr.enable = true;
     config = {
-      common = {
-        default = ["wlr"];
-      };
-      sway = {
-        default = ["gtk"];
-      };
+      common = { default = [ "wlr" ]; };
+      sway = { default = [ "gtk" ]; };
     };
   };
 
@@ -161,13 +142,14 @@
   # programs.fish.enable = true; # Breaks hm
 
   environment.systemPackages = with pkgs; [
-    (pkgs.gamescope_git.overrideAttrs
-      (oldAttrs: {patches = (oldAttrs.patches or []) ++ [./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff];}))
+    (pkgs.gamescope_git.overrideAttrs (oldAttrs: {
+      patches = (oldAttrs.patches or [ ])
+        ++ [ ./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff ];
+    }))
     lact
   ];
-  systemd.packages = with pkgs; [lact];
-  systemd.services.lactd.wantedBy = ["multi-user.target"];
-  #programs.fht-compositor.enable = true;
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
   services.ratbagd.enable = true;
 

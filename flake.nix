@@ -19,24 +19,11 @@
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    #fht-compositor = {
-    #  url = "github:nferhat/fht-compositor";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.rust-overlay.follows = "";
-    #};
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: {
+  outputs = { nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = { inherit inputs; };
       modules = [
         ./nixos/configuration.nix
         home-manager.nixosModules.home-manager
@@ -45,7 +32,7 @@
             # useGlobalPkgs = true;
             useUserPackages = true;
             users.shiba = import ./home/home.nix;
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = { inherit inputs; };
           };
         }
       ];

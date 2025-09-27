@@ -10,13 +10,15 @@
       fish.enable = false;
       fuzzel.enable = false;
       btop.enable = false;
-      nvf.enable = false;
+      helix.enable = false;
       sway.enable = false;
     };
 
     cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
+      #package = pkgs.bibata-cursors;
+      #name = "Bibata-Modern-Classic";
+      package = pkgs.apple-cursor;
+      name = "macOS";
       size = 24;
     };
 

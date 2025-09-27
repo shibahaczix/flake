@@ -4,7 +4,6 @@
     slurp
     wl-clipboard
     wlr-randr
-    mesa-demos
     vulkan-tools
   ];
 
@@ -25,7 +24,7 @@
         "HDMI-A-1" = {
           resolution = "1920x1080";
           position = "1920,0";
-          mode = "1920x1080@73.095592Hz";
+          mode = "1920x1080@72.808998Hz";
         };
       };
 
@@ -34,14 +33,15 @@
       menu = [];
 
       window = {
-        border = 3;
+        #border = 3;
+        border = 2;
         titlebar = false;
       };
 
-      gaps = {
-        inner = 9;
-        outer = 2;
-      };
+      #gaps = {
+      #  inner = 9;
+      #  outer = 2;
+      #};
 
       input = {
         "*" = {
@@ -58,6 +58,8 @@
       ];
 
       floating.modifier = "Mod4";
+
+      focus.followMouse = true;
 
       keybindings = let
         mod = "Mod4";
@@ -141,8 +143,9 @@
 
     extraConfig = ''
       shadows enable
-      blur enable
+      blur disable
       corner_radius 12
+      for_window [app_id="kitty"] blur enable
     '';
   };
 
