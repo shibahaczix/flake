@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, ... }: {
+{ pkgs, inputs, config, ... }: {
   nix.package = pkgs.nixVersions.latest;
   nix = {
     settings = {
@@ -12,11 +12,8 @@
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  imports = [
-    inputs.chaotic.nixosModules.default
-    inputs.stylix.nixosModules.stylix
-    ./hardware-configuration.nix
-  ];
+  imports =
+    [ inputs.chaotic.nixosModules.default ./hardware-configuration.nix ];
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
@@ -26,9 +23,12 @@
 
   powerManagement.cpuFreqGovernor = "ondemand";
 
+  boot.initrd.systemd.enable = true;
+
   #hardware.graphics = {
   #  enable = true;
   #  enable32Bit = true;
+  #  extraPackages = [ pkgs.rocmPackages.clr.icd ]
   #};
   #environment.variables.AMD_VULKAN_ICD = "RADV";
   hardware.amdgpu.overdrive.enable = true;
@@ -40,14 +40,6 @@
   boot.kernelParams =
     [ "radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1" ];
   hardware.amdgpu.overdrive.ppfeaturemask = "0xffffffff";
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-    ];
 
   console = {
     packages = with pkgs; [ terminus_font ];
@@ -103,34 +95,47 @@
     flake = "/home/shiba/flake";
   };
 
-  stylix = {
-    enable = true;
-    image = ./wallpaper.jpg;
-    targets.console.enable = false;
-  };
-
   programs.steam = { enable = true; };
 
-  programs = {
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-      package = pkgs.swayfx;
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "dbus-run-session ${pkgs.swayfx}/bin/sway";
+        user = "shiba";
+      };
+      default_session = initial_session;
     };
-    xwayland.enable = true;
   };
 
-  services.displayManager.ly.enable = true;
+  environment.variables = {
+    QT_QPA_PLATFORM = "wayland";
+    XDG_CURRENT_DESKTOP = "sway";
+    NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland";
+  };
 
+  fonts = {
+    packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
+
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "JetBrainsMono NF" ];
+        sansSerif = [ "JetBrainsMono NF" ];
+        serif = [ "JetBrainsMono NF" ];
+      };
+    };
+  };
+
+  programs.dconf.enable = true; # needed for sway
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
-    wlr.enable = true;
-    config = {
-      common = { default = [ "wlr" ]; };
-      sway = { default = [ "gtk" ]; };
-    };
+    wlr.enable = true; # provides screen share
+    config.common.default = [ "wlr" ];
   };
+
+  security.sudo-rs.enable = true;
+  security.sudo.enable = false;
 
   programs.ssh = {
     extraConfig = ''
@@ -147,6 +152,7 @@
         ++ [ ./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff ];
     }))
     lact
+    uutils-coreutils-noprefix
   ];
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = [ "multi-user.target" ];
@@ -157,5 +163,9 @@
 
   services.flatpak.enable = true;
 
-  system.stateVersion = "25.05";
+  nixpkgs.config.allowUnfree = true;
+
+  hardware.cpu.amd.updateMicrocode =
+    config.hardware.enableRedistributableFirmware;
+  system.stateVersion = config.system.nixos.release;
 }

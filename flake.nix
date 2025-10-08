@@ -11,10 +11,6 @@
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +25,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            # useGlobalPkgs = true;
+            useGlobalPkgs = true;
             useUserPackages = true;
             users.shiba = import ./home/home.nix;
             extraSpecialArgs = { inherit inputs; };

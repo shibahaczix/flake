@@ -1,40 +1,67 @@
-{...}: {
+{ pkgs, ... }: {
   programs.kitty = {
     enable = true;
+    font = {
+      name = "JetBrainsMono NF";
+      size = 11.5;
+    };
     settings = {
-      enable_audio_bell = false;
       shell = "fish";
+
+      enable_audio_bell = false;
+
       confirm_os_window_close = 0;
+
       cursor_trail = 1;
-      font_family = "JetBrainsMono NF Regular";
+
       bold_font = "auto";
       italic_font = "auto";
       bold_italic_font = "auto";
-      font_size = "11.5";
+
+      cursor = "#ffcc66";
+
       background = "#212733";
       foreground = "#d9d7ce";
-      cursor = "#ffcc66";
+
       selection_background = "#343f4c";
-      color0 = "#191e2a";
-      color8 = "#686868";
-      color1 = "#ed8274";
-      color9 = "#f28779";
-      color2 = "#a6cc70";
-      color10 = "#bae67e";
-      color3 = "#fad07b";
-      color11 = "#ffd580";
-      color4 = "#6dcbfa";
-      color12 = "#73d0ff";
-      color5 = "#cfbafa";
-      color13 = "#d4bfff";
-      color6 = "#90e1c6";
-      color14 = "#95e6cb";
-      color7 = "#c7c7c7";
-      color15 = "#ffffff";
       selection_foreground = "#212733";
+
       background_opacity = "0.0";
+
       window_border_width = "0px";
       tab_bar_margin_width = "0.0";
+
+      # black  (bg3/bg4)
+      color0 = "#191e2a";
+      color8 = "#686868";
+
+      # red
+      color1 = "#ed8274";
+      color9 = "#f28779";
+
+      # green
+      color2 = "#a6cc70";
+      color10 = "#bae67e";
+
+      # yellow
+      color3 = "#fad07b";
+      color11 = "#ffd580";
+
+      # blue
+      color4 = "#6dcbfa";
+      color12 = "#73d0ff";
+
+      # purple
+      color5 = "#cfbafa";
+      color13 = "#d4bfff";
+
+      # aqua
+      color6 = "#90e1c6";
+      color14 = "#95e6cb";
+
+      # white (fg4/fg3)
+      color7 = "#c7c7c7";
+      color15 = "#ffffff";
     };
     keybindings = {
       "ctrl+shift+c" = "copy_to_clipboard";
@@ -44,3 +71,4 @@
     };
   };
 }
+

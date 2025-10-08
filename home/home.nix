@@ -1,9 +1,8 @@
-{...}: {
+{ nixosConfig, ... }: {
   home.username = "shiba";
   home.homeDirectory = "/home/shiba";
 
-  home.stateVersion = "25.05";
-
+  home.stateVersion = nixosConfig.system.nixos.release;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -12,8 +11,8 @@
     ./git.nix
     ./fastfetch.nix
     ./btop.nix
+    ./style.nix
     ./kitty.nix
-    ./stylix.nix
     ./swayfx.nix
     ./shell.nix
     ./obs.nix

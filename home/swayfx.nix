@@ -1,11 +1,5 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    grim
-    slurp
-    wl-clipboard
-    wlr-randr
-    vulkan-tools
-  ];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ grim slurp wl-clipboard wlr-randr vulkan-tools ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -28,9 +22,9 @@
         };
       };
 
-      bars = [];
-      terminal = [];
-      menu = [];
+      bars = [ ];
+      terminal = [ ];
+      menu = [ ];
 
       window = {
         #border = 3;
@@ -52,9 +46,9 @@
       };
 
       startup = [
-        {command = "systemctl --user import-environment WAYLAND_DISPLAY";}
-        {command = "systemctl --user restart xdg-desktop-portal-wlr.service";}
-        {command = "gammastep output *";}
+        { command = "systemctl --user import-environment WAYLAND_DISPLAY"; }
+        { command = "systemctl --user restart xdg-desktop-portal-wlr.service"; }
+        { command = "gammastep output *"; }
       ];
 
       floating.modifier = "Mod4";
@@ -66,7 +60,6 @@
         term = "kitty";
         menu = "fuzzel";
       in {
-        # Launch terminal & menu
         "${mod}+Return" = "exec ${term}";
         "${mod}+space" = "exec ${menu}";
 
@@ -102,8 +95,9 @@
         "${mod}+f" = "fullscreen";
         "${mod}+v" = "floating toggle";
 
-        "Print" = "exec grim -g \"$(slurp)\" -t png - | wl-copy -t image/png";
-        "${mod}+Print" = "exec grim -o HDMI-A-1 -t png - | wl-copy -t image/png";
+        "Print" = ''exec grim -g "$(slurp)" -t png - | wl-copy -t image/png'';
+        "${mod}+Print" =
+          "exec grim -o HDMI-A-1 -t png - | wl-copy -t image/png";
       };
 
       colors = {

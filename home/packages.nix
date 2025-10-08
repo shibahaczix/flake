@@ -28,10 +28,13 @@
     nvtopPackages.amd
     mangohud
     mangojuice
-    cozette
     kdePackages.kdenlive
+    qemu
     #davinci-resolve
+    blender
   ];
+
+  xdg.mimeApps.enable = true;
 
   xdg.desktopEntries = {
     "idea-community" = {
@@ -49,15 +52,5 @@
       categories = [ "" ];
       terminal = false;
     };
-  };
-
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "discord-canary"
-        "apple_cursor"
-        "davinci-resolve"
-      ];
-    # permittedInsecurePackages = [ ];
   };
 }
