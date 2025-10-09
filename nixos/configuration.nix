@@ -48,9 +48,11 @@
   };
 
   networking = {
-    useNetworkd = true; # systemd-networkd is faster at startup by default and more actively maintained TODO: set up with `systemd.network`
+    useNetworkd =
+      true; # systemd-networkd is faster at startup by default and more actively maintained TODO: set up with `systemd.network`
     hostName = "nixos";
-    wireless.enable = false; # no wpa_supplicant needed for an ethernet connection
+    wireless.enable =
+      false; # no wpa_supplicant needed for an ethernet connection
   };
 
   time.timeZone = "Europe/Warsaw";
@@ -111,7 +113,8 @@
       after = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart =
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
@@ -172,8 +175,8 @@
     (pkgs.gamescope_git.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or [ ])
         ++ [ ./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff ];
-        polkit_gnome 
     }))
+    polkit_gnome
     lact
     uutils-coreutils-noprefix
   ];
