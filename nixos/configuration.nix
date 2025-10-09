@@ -49,7 +49,7 @@
 
   networking = {
     useNetworkd = true; # systemd-networkd is faster at startup by default and more actively maintained TODO: set up with `systemd.network`
-    hostName = "shiba";
+    hostName = "nixos";
     wireless.enable = false; # no wpa_supplicant needed for an ethernet connection
   };
 
