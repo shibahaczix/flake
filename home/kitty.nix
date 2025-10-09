@@ -1,6 +1,17 @@
 { pkgs, ... }: {
   programs.kitty = {
     enable = true;
+
+    package = (pkgs.callPackage ./kitty-42.2.nix { });
+    # Fixed a "bug" that makes background opacity linear
+    # which forces me to use built in kitty blur and opacity
+    # instead of my compositor opacity and blur.
+    # https://github.com/kovidgoyal/kitty/tree/linear
+    # https://github.com/kovidgoyal/kitty/issues/8869
+    # https://github.com/kovidgoyal/kitty/issues/9073
+    # https://sw.kovidgoyal.net/kitty/changelog/#id2
+    # https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.background_opacity
+
     font = {
       name = "JetBrainsMono NF";
       size = 11.5;

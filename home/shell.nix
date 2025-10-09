@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
@@ -28,7 +28,8 @@
       seg5 = "#296DFF";
       seg6 = "#0A88FF";
     in {
-      format = "[](${seg1})$os$username[](bg:${seg2} fg:${seg1})$directory[](fg:${seg2} bg:${seg3})$git_branch$git_status[](fg:${seg3} bg:${seg4})$c$elixir$elm$golang$gradle$haskell$java$julia$nodejs$nim$rust$scala[](fg:${seg4} bg:${seg5})$docker_context[](fg:${seg5} bg:${seg6})$time[ ](fg:${seg6})";
+      format =
+        "[](${seg1})$os$username[](bg:${seg2} fg:${seg1})$directory[](fg:${seg2} bg:${seg3})$git_branch$git_status[](fg:${seg3} bg:${seg4})$c$elixir$elm$golang$gradle$haskell$java$julia$nodejs$nim$rust$scala[](fg:${seg4} bg:${seg5})$docker_context[](fg:${seg5} bg:${seg6})$time[ ](fg:${seg6})";
       username = {
         show_always = true;
         style_user = "bg:${seg1}";
