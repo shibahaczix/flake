@@ -47,8 +47,11 @@
     earlySetup = true;
   };
 
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    useNetworkd = true; # systemd-networkd is faster at startup by default and more actively maintained TODO: set up with `systemd.network`
+    hostName = "shiba";
+    wireless.enable = false; # no wpa_supplicant needed for an ethernet connection
+  };
 
   time.timeZone = "Europe/Warsaw";
 
@@ -96,6 +99,25 @@
   };
 
   programs.steam = { enable = true; };
+
+  security.polkit.enable = true;
+
+  # use polkit_gnome as authentication agent
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
 
   services.greetd = {
     enable = true;
@@ -150,6 +172,7 @@
     (pkgs.gamescope_git.overrideAttrs (oldAttrs: {
       patches = (oldAttrs.patches or [ ])
         ++ [ ./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff ];
+        polkit_gnome 
     }))
     lact
     uutils-coreutils-noprefix
