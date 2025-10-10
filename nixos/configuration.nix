@@ -101,7 +101,7 @@
     flake = "/home/shiba/flake";
   };
 
-  programs.steam = { enable = true; };
+  programs.steam.enable = true;
 
   security.polkit.enable = true;
 

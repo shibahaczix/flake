@@ -15,7 +15,7 @@
     # https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.background_opacity
 
     font = {
-      name = "JetBrainsMono NF";
+      name = "JetBrainsMonoNL NF";
       size = 11.5;
     };
 
