@@ -27,6 +27,7 @@
           S-up = [ ];
           S-down = [ ];
         };
+
         select = {
           C-right = "move_next_word_end";
           C-left = "move_prev_word_start";
@@ -66,11 +67,13 @@
           d = [ "yank_main_selection_to_clipboard" "delete_selection" ];
           esc = [ "collapse_selection" "keep_primary_selection" "normal_mode" ];
         };
+
         insert = {
           C-right = "move_next_word_end";
           C-left = "move_prev_word_start";
           C-backspace = "delete_word_backward";
         };
+
       };
 
       theme = "amberwood"; # fleet_dark

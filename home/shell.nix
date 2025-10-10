@@ -2,12 +2,19 @@
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
-    ssh = "env TERM=xterm-256color ssh";
     ls = "eza";
-    cat = "bat --style=plain --theme=ansi";
+    cat = "bat";
   };
 
   programs.zoxide.enable = true;
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "ansi";
+      style = "plain";
+    };
+  };
+  programs.eza.enable = true;
 
   programs.fish = {
     enable = true;
@@ -20,7 +27,7 @@
   programs.starship = {
     enable = true;
     settings = let
-      # Segments
+      # Fade effect
       seg1 = "#A600FF";
       seg2 = "#871BFF";
       seg3 = "#6836FF";

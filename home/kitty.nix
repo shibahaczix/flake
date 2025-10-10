@@ -16,6 +16,7 @@
       name = "JetBrainsMono NF";
       size = 11.5;
     };
+
     settings = {
       shell = "fish";
 
@@ -74,6 +75,7 @@
       color7 = "#c7c7c7";
       color15 = "#ffffff";
     };
+
     keybindings = {
       "ctrl+shift+c" = "copy_to_clipboard";
       "ctrl+shift+v" = "paste_from_clipboard";

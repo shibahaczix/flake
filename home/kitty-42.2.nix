@@ -5,7 +5,7 @@
 , installShellFiles, dbus, sudo, libcanberra, libicns, wayland-scanner, libpng
 , python3, zlib, simde, bashInteractive, zsh, fish, nixosTests, go_1_24
 , buildGo124Module, nix-update-script, makeBinaryWrapper
-# , autoSignDarwinBinariesHook
+# , autoSignDarwinBinariesHook # Why?
 , cairo, }:
 
 with python3Packages;
@@ -141,7 +141,7 @@ buildPythonApplication rec {
     # integration tests need sudo
     sudo
   ];
-  doCheck = false;
+  doCheck = false; # Idk why it needs it
 
   # skip failing tests due to darwin sandbox
   preCheck = lib.optionalString stdenv.hostPlatform.isDarwin ''

@@ -1,13 +1,12 @@
 { lib, pkgs, inputs, ... }: {
   home.packages = with pkgs; [
-    inputs.zen-browser.packages."${system}".generic # Web browser
     rtorrent
     piper
     (discord-canary.override {
       withOpenASAR = true;
       withVencord = true;
     })
-    pamixer
+    # pamixer # broken?
     element-desktop
     nautilus
     baobab
@@ -17,8 +16,6 @@
     #jetbrains.idea-community
     pavucontrol
     protontricks
-    eza
-    bat
     vlc
     quickemu
     conceal

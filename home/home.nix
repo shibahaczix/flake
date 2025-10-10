@@ -12,6 +12,7 @@
     ./fastfetch.nix
     ./btop.nix
     ./style.nix
+    ./zen.nix
     ./kitty.nix
     ./swayfx.nix
     ./shell.nix

@@ -84,10 +84,8 @@
 
   users.users.shiba = {
     isNormalUser = true;
-    # description = "shiba";
     password = "123";
     extraGroups = [ "networkmanager" "wheel" ];
-    # packages = with pkgs; [ ];
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
@@ -166,16 +164,12 @@
     extraConfig = ''
       AddKeysToAgent yes
     '';
-    #startAgent = true;
+    startAgent = true;
   };
 
   # programs.fish.enable = true; # Breaks hm
 
   environment.systemPackages = with pkgs; [
-    (pkgs.gamescope_git.overrideAttrs (oldAttrs: {
-      patches = (oldAttrs.patches or [ ])
-        ++ [ ./e07c32c6684b56bf969e22a9f04e6a2c1dd95061.diff ];
-    }))
     polkit_gnome
     lact
     uutils-coreutils-noprefix

@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [tig];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ tig ];
   programs.git = {
     enable = true;
     userName = "shibahaczix";
@@ -9,6 +9,6 @@
       signByDefault = true;
       key = "~/.ssh/id_ed25519";
     };
-    extraConfig.core.editor = "nvim";
+    extraConfig.core.editor = "hx";
   };
 }
