@@ -1,8 +1,11 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+
+{
   imports = [ inputs.zen-browser.homeModules.beta ];
 
   programs.zen-browser = {
     enable = true;
+
     policies = {
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
@@ -14,6 +17,7 @@
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
+
       EnableTrackingProtection = {
         Value = true;
         Locked = true;

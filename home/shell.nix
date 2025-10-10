@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";

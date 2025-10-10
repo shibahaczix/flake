@@ -1,4 +1,6 @@
-{ lib, pkgs, inputs, ... }: {
+{ pkgs, ... }:
+
+{
   home.packages = with pkgs; [
     rtorrent
     piper
@@ -41,6 +43,7 @@
       categories = [ "Development" "IDE" ];
       terminal = false;
     };
+
     "discord-canary" = {
       name = "Discord Canary (Wayland)";
       icon = "discord-canary";

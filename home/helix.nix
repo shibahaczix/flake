@@ -1,7 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   programs.helix = {
     enable = true;
+
     package = pkgs.evil-helix;
+
     settings = {
       keys = {
         normal = {
@@ -73,7 +77,6 @@
           C-left = "move_prev_word_start";
           C-backspace = "delete_word_backward";
         };
-
       };
 
       theme = "amberwood"; # fleet_dark
@@ -96,6 +99,7 @@
 
       editor = { line-number = "relative"; };
     };
+
     languages.language = [{
       name = "nix";
       auto-format = true;

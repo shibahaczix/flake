@@ -1,4 +1,6 @@
-{ nixosConfig, ... }: {
+{ nixosConfig, ... }:
+
+{
   home.username = "shiba";
   home.homeDirectory = "/home/shiba";
 

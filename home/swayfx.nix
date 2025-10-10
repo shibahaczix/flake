@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   home.packages = with pkgs; [ grim slurp wl-clipboard wlr-randr vulkan-tools ];
 
   wayland.windowManager.sway = {

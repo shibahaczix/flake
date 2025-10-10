@@ -1,4 +1,7 @@
-{ pkgs, inputs, config, ... }: {
+{ pkgs, inputs, config, ... }:
+
+{
+
   nix.package = pkgs.nixVersions.latest;
   nix = {
     settings = {

@@ -1,9 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   programs.kitty = {
     enable = true;
 
     package = (pkgs.callPackage ./kitty-42.2.nix { });
-    # Fixed a "bug" that makes background opacity linear
+    # 43.0 "fixed" a "bug" that makes background opacity non-linear
     # which forces me to use built in kitty blur and opacity
     # instead of my compositor opacity and blur.
     # https://github.com/kovidgoyal/kitty/tree/linear
@@ -18,6 +20,10 @@
     };
 
     settings = {
+      bold_font = "auto";
+      italic_font = "auto";
+      bold_italic_font = "auto";
+
       shell = "fish";
 
       enable_audio_bell = false;
@@ -26,9 +32,11 @@
 
       cursor_trail = 1;
 
-      bold_font = "auto";
-      italic_font = "auto";
-      bold_italic_font = "auto";
+      background_opacity = "0.0";
+
+      window_border_width = "0px";
+
+      tab_bar_margin_width = "0.0";
 
       cursor = "#ffcc66";
 
@@ -37,11 +45,6 @@
 
       selection_background = "#343f4c";
       selection_foreground = "#212733";
-
-      background_opacity = "0.0";
-
-      window_border_width = "0px";
-      tab_bar_margin_width = "0.0";
 
       # black  (bg3/bg4)
       color0 = "#191e2a";
