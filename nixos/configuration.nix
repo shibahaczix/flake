@@ -20,7 +20,7 @@
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
-  boot.loader.limine.style.wallpapers = [ (builtins.toString ./nixos.jpg) ];
+  boot.loader.limine.style.wallpapers = [ (builtins.toString ./nixos.png) ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
