@@ -188,7 +188,5 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  hardware.cpu.amd.updateMicrocode =
-    config.hardware.enableRedistributableFirmware;
   system.stateVersion = config.system.nixos.release;
 }
