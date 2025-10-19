@@ -28,14 +28,14 @@
 
   boot.initrd.systemd.enable = true;
 
-  #hardware.graphics = {
-  #  enable = true;
-  #  enable32Bit = true;
-  #  extraPackages = [ pkgs.rocmPackages.clr.icd ]
-  #};
-  #environment.variables.AMD_VULKAN_ICD = "RADV";
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [ pkgs.rocmPackages.clr.icd ];
+  };
+  environment.variables.AMD_VULKAN_ICD = "RADV";
   hardware.amdgpu.overdrive.enable = true;
-  chaotic.mesa-git.enable = true;
+  # chaotic.mesa-git.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.enable = true;
