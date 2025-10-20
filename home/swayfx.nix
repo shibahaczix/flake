@@ -149,10 +149,10 @@
     enable = true;
     settings = {
       font = "JetBrainsMono NF 10";
-      borderSize = 4;
-      borderRadius = 5;
-      borderColor = "#95e6cbff";
-      backgroundColor = "#171717ff";
+      border-size = 4;
+      border-radius = 5;
+      border-color = "#95e6cbff";
+      background-color = "#171717ff";
     };
   };
 
