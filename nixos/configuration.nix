@@ -22,27 +22,29 @@
   boot.loader.limine.efiSupport = true;
   boot.loader.limine.style.wallpapers = [ (builtins.toString ./nixos.png) ];
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.kernelPackages =
+    pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "ZEN4"; };
 
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   boot.initrd.systemd.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = [ pkgs.rocmPackages.clr.icd ];
-  };
-  environment.variables.AMD_VULKAN_ICD = "RADV";
+  # hardware.graphics = {
+  #   enable = true;
+  #   enable32Bit = true;
+  #   extraPackages = [ pkgs.rocmPackages.clr.icd ];
+  # };
+  chaotic.mesa-git.enable = true;
+  chaotic.mesa-git.extraPackages = with pkgs; [
+    vulkanPackages_latest.vulkan-loader
+    vulkanPackages_latest.vulkan-validation-layers
+    vulkanPackages_latest.vulkan-extension-layer
+  ]; # THIS IS VERY IMPORTANT IT FIXES PERFORMANCE ISSUES WITH CS2
   hardware.amdgpu.overdrive.enable = true;
-  # chaotic.mesa-git.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
   boot.kernelParams =
-    [ "radeon.si_support=0" "amdgpu.si_support=1" "pci=realloc" "rebar=1" ];
-  hardware.amdgpu.overdrive.ppfeaturemask = "0xffffffff";
+    [ "pci=realloc" "rebar=1" "amdgpu.ppfeaturemask=0xffffffff" ];
 
   console = {
     packages = with pkgs; [ terminus_font ];
@@ -102,43 +104,17 @@
   };
 
   programs.steam.enable = true;
+  programs.gamescope.enable = true;
 
-  security.polkit.enable = true;
-
-  # use polkit_gnome as authentication agent
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
-
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   services.greetd = {
     enable = true;
-    settings = rec {
-      initial_session = {
-        command = "dbus-run-session ${pkgs.swayfx}/bin/sway";
+    settings = {
+      default_session = {
+        command = "${pkgs.niri-unstable}/bin/niri-session";
         user = "shiba";
       };
-      default_session = initial_session;
     };
-  };
-
-  environment.variables = {
-    QT_QPA_PLATFORM = "wayland";
-    XDG_CURRENT_DESKTOP = "sway";
-    NIXOS_OZONE_WL = "1";
-    GDK_BACKEND = "wayland";
   };
 
   fonts = {
@@ -153,13 +129,6 @@
     };
   };
 
-  programs.dconf.enable = true; # needed for sway
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true; # provides screen share
-    config.common.default = [ "wlr" ];
-  };
-
   security.sudo-rs.enable = true;
   security.sudo.enable = false;
 
@@ -167,18 +136,19 @@
     extraConfig = ''
       AddKeysToAgent yes
     '';
-    startAgent = true;
+    # startAgent = true;
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
   };
 
   # programs.fish.enable = true; # Breaks hm
 
-  environment.systemPackages = with pkgs; [
-    polkit_gnome
-    lact
-    uutils-coreutils-noprefix
-  ];
-  systemd.packages = with pkgs; [ lact ];
-  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+  environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
+
+  services.lact.enable = true;
 
   services.ratbagd.enable = true;
 

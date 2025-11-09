@@ -4,16 +4,6 @@
   programs.kitty = {
     enable = true;
 
-    package = (pkgs.callPackage ./kitty-42.2.nix { });
-    # 43.0 "fixed" a "bug" that makes background opacity non-linear
-    # which forces me to use built in kitty blur and opacity
-    # instead of my compositor opacity and blur.
-    # https://github.com/kovidgoyal/kitty/tree/linear
-    # https://github.com/kovidgoyal/kitty/issues/8869
-    # https://github.com/kovidgoyal/kitty/issues/9073
-    # https://sw.kovidgoyal.net/kitty/changelog/#id2
-    # https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.background_opacity
-
     font = {
       name = "JetBrainsMonoNL NF";
       size = 11.5;
@@ -32,7 +22,9 @@
 
       cursor_trail = 1;
 
-      background_opacity = "0.0";
+      background_blur = 5;
+
+      background_opacity = "0.8";
 
       window_border_width = "0px";
 

@@ -6,15 +6,19 @@
   programs.git = {
     enable = true;
 
-    userName = "shibahaczix";
-    userEmail = "shibahaczix@gmail.com";
+    settings = {
+      user = {
+        name = "shibahaczix";
+        email = "shibahaczix@gmail.com";
+      };
 
-    signing = {
-      signByDefault = true;
-      format = "ssh";
-      key = "~/.ssh/id_ed25519";
+      signing = {
+        signByDefault = true;
+        format = "ssh";
+        key = "~/.ssh/id_ed25519";
+      };
+
+      extraConfig.core.editor = "hx";
     };
-
-    extraConfig.core.editor = "hx";
   };
 }

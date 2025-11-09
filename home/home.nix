@@ -16,7 +16,7 @@
     ./style.nix
     ./zen.nix
     ./kitty.nix
-    ./swayfx.nix
+    ./niri.nix
     ./shell.nix
     ./obs.nix
     ./helix.nix

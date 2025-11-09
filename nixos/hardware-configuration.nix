@@ -6,32 +6,34 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "ehci_pci" "ata_piix" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" "ntsync" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6bc3c0e0-4dcd-4208-a6f5-11fbb49ceb84";
+    device = "/dev/disk/by-uuid/385d88a3-0fd4-47f4-ae55-474ef8e049b1";
     fsType = "btrfs";
-    options = [ "subvol=@" ];
+    options = [
+      "noatime"
+      "compress=no"
+      "space_cache=v2"
+      "commit=120"
+      "discard=async"
+      "ssd"
+    ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0898-2418";
+    device = "/dev/disk/by-uuid/2A3C-8D77";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/436c74b2-eed1-4ea2-9777-1c484e413838";
-    fsType = "ext4";
-  };
+  swapDevices = [ ];
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/74340990-e349-4c35-a26a-91472a2786e5"; }];
-
+  hardware.firmware = [ pkgs.linux-firmware ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode =
+  hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
