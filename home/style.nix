@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  # TODO: make me work
   home.pointerCursor = {
     enable = true;
     name = "macOS";
@@ -13,10 +12,8 @@
 
   gtk = {
     enable = true;
-    # TODO: font = {};
     theme = {
       name = "Fluent-Dark";
-      # TODO: gtkThemeFromScheme, manually defined w colors? (nix-colors)
       package = pkgs.fluent-gtk-theme;
     };
 

@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     wl-clipboard
     wlr-randr
-    vulkan-tools
+    vulkanPackages_latest.vulkan-tools
     swaybg
     xwayland-satellite-unstable
   ];
@@ -108,7 +108,7 @@
           focus-ring = {
             width = 2;
             inactive.color = "#7fc8ff";
-            active.color = "#70b8d2";
+            active.color = "#00ffff";
             urgent.color = "#9b0000";
           };
 

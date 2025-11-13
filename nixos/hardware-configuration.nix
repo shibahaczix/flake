@@ -30,8 +30,6 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  swapDevices = [ ];
-
   hardware.firmware = [ pkgs.linux-firmware ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode =

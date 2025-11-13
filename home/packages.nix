@@ -9,7 +9,6 @@
       withVencord = true;
     })
     # pamixer # broken?
-    element-desktop
     nautilus
     baobab
     gimp
@@ -31,6 +30,7 @@
     qemu
     #davinci-resolve
     blender
+    (bottles.override { removeWarningPopup = true; })
   ];
 
   xdg.mimeApps.enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.kitty = {
@@ -19,15 +19,11 @@
       enable_audio_bell = false;
 
       confirm_os_window_close = 0;
-
       cursor_trail = 1;
-
       background_blur = 5;
 
       background_opacity = "0.8";
-
       window_border_width = "0px";
-
       tab_bar_margin_width = "0.0";
 
       cursor = "#ffcc66";
