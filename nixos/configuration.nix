@@ -36,10 +36,14 @@
   # };
   chaotic.mesa-git.enable = true;
   chaotic.mesa-git.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+    ocl-icd
+
+    # THIS IS VERY IMPORTANT IT FIXES PERFORMANCE ISSUES WITH CS2
     vulkanPackages_latest.vulkan-loader
     vulkanPackages_latest.vulkan-validation-layers
     vulkanPackages_latest.vulkan-extension-layer
-  ]; # THIS IS VERY IMPORTANT IT FIXES PERFORMANCE ISSUES WITH CS2
+  ];
   hardware.amdgpu.overdrive.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];

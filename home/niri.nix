@@ -5,6 +5,7 @@
     wl-clipboard
     wlr-randr
     vulkanPackages_latest.vulkan-tools
+    clinfo
     swaybg
     xwayland-satellite-unstable
   ];
@@ -21,7 +22,7 @@
         command = [
           "swaybg"
           "--image"
-          "/home/shiba/flake/home/wallpapers/wallpaper1.jpg"
+          "/home/shiba/flake/home/wallpapers/wallpaper.png"
         ];
       }];
       outputs = {
@@ -108,7 +109,7 @@
           focus-ring = {
             width = 2;
             inactive.color = "#7fc8ff";
-            active.color = "#00ffff";
+            active.color = "#b9aeda";
             urgent.color = "#9b0000";
           };
 
@@ -137,10 +138,10 @@
     enable = true;
     settings = {
       font = "JetBrainsMono NF 10";
-      border-size = 4;
-      border-radius = 5;
-      border-color = "#95e6cbff";
-      background-color = "#171717ff";
+      border-size = 2;
+      # border-radius = 5;
+      border-color = "#b9aedaff";
+      background-color = "#11111bff";
     };
   };
 
@@ -152,21 +153,23 @@
         font = "JetBrainsMono NF";
         line-height = 22;
       };
-      colors.background = "171717ff";
-      colors.border = "95e6cbff";
-      colors.text = "ffffffff";
-      colors.selection = "#101010ff";
-      colors.selection-text = "#f0f0f0ff";
-      border.width = 4;
+      border.radius = 0;
+      colors.background = "11111bff";
+      colors.border = "b9aedaff";
+      colors.text = "b9aedaff";
+      colors.selection = "#b9aedaff";
+      colors.selection-text = "#11111bff";
+      border.width = 2;
     };
   };
 
-  services.gammastep = {
-    enable = true;
-    provider = "manual";
-    latitude = 52.2;
-    longitude = 18.2;
-    temperature.day = 4000;
-    temperature.night = 4000;
-  };
+  # I can just use my displays color settings
+  # services.gammastep = {
+  #   enable = true;
+  #   provider = "manual";
+  #   latitude = 52.2;
+  #   longitude = 18.2;
+  #   temperature.day = 4000;
+  #   temperature.night = 4000;
+  # };
 }

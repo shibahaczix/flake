@@ -8,7 +8,6 @@
       withOpenASAR = true;
       withVencord = true;
     })
-    # pamixer # broken?
     nautilus
     baobab
     gimp
@@ -16,9 +15,7 @@
     protonplus
     #jetbrains.idea-community
     pavucontrol
-    protontricks
     vlc
-    quickemu
     conceal
     file-roller
     gnome-text-editor
@@ -26,7 +23,7 @@
     nvtopPackages.amd
     mangohud
     mangojuice
-    kdePackages.kdenlive
+    # kdePackages.kdenlive
     qemu
     #davinci-resolve
     blender
