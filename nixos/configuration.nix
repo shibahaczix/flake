@@ -1,4 +1,9 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
 
@@ -6,24 +11,30 @@
   nix = {
     settings = {
       trusted-users = [ "shiba" ];
-      substituters =
-        [ "https://nix-community.cachix.org" "https://cache.nixos.org/" ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+      ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-  imports =
-    [ inputs.chaotic.nixosModules.default ./hardware-configuration.nix ];
+  imports = [
+    inputs.chaotic.nixosModules.default
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
   boot.loader.limine.style.wallpapers = [ (builtins.toString ./nixos.png) ];
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages =
-    pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "ZEN4"; };
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "ZEN4"; };
 
   powerManagement.cpuFreqGovernor = "schedutil";
 
@@ -58,8 +69,7 @@
     "vm.dirty_expire_centisecs" = 6000;
   };
 
-  systemd.tmpfiles.rules =
-    [ "w /sys/kernel/mm/transparent_hugepage/shmem_enabled - - - - advise" ];
+  systemd.tmpfiles.rules = [ "w /sys/kernel/mm/transparent_hugepage/shmem_enabled - - - - advise" ];
 
   console = {
     packages = with pkgs; [ terminus_font ];
@@ -68,11 +78,9 @@
   };
 
   networking = {
-    useNetworkd =
-      true; # systemd-networkd is faster at startup by default and more actively maintained
+    useNetworkd = true; # systemd-networkd is faster at startup by default and more actively maintained
     hostName = "nixos";
-    wireless.enable =
-      false; # no wpa_supplicant needed for an ethernet connection
+    wireless.enable = false; # no wpa_supplicant needed for an ethernet connection
   };
 
   time.timeZone = "Europe/Warsaw";
@@ -105,8 +113,11 @@
   users.users.shiba = {
     isNormalUser = true;
     password = "123";
-    extraGroups =
-      [ "wheel" "gamemode" "input" ]; # https://wiki.nixos.org/wiki/GameMode
+    extraGroups = [
+      "wheel"
+      "gamemode"
+      "input"
+    ]; # https://wiki.nixos.org/wiki/GameMode
 
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
@@ -160,12 +171,12 @@
 
   # programs.fish.enable = true; # Breaks hm
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
+  # virtualisation.podman = {
+  #   enable = true;
+  #   dockerCompat = true;
+  # };
 
-  environment.systemPackages = with pkgs; [ distrobox ];
+  # environment.systemPackages = with pkgs; [ distrobox ];
 
   services.lact.enable = true;
 
@@ -173,7 +184,7 @@
 
   programs.gamemode.enable = true;
 
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
