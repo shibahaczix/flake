@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.pointerCursor = {
@@ -12,6 +15,7 @@
 
   gtk = {
     enable = true;
+
     theme = {
       name = "Fluent-Dark";
       package = pkgs.fluent-gtk-theme;
@@ -25,6 +29,9 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
   };
 }

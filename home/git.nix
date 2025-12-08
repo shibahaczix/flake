@@ -1,10 +1,15 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [ tig ];
 
   programs.git = {
     enable = true;
+
+    lfs.enable = true;
 
     settings = {
       user = {

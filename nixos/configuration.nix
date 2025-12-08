@@ -27,13 +27,9 @@
 
   powerManagement.cpuFreqGovernor = "schedutil";
 
+  hardware.amdgpu.initrd.enable = true;
   boot.initrd.systemd.enable = true;
 
-  # hardware.graphics = {
-  #   enable = true;
-  #   enable32Bit = true;
-  #   extraPackages = [ pkgs.rocmPackages.clr.icd ];
-  # };
   chaotic.mesa-git.enable = true;
   chaotic.mesa-git.extraPackages = with pkgs; [
     rocmPackages.clr.icd
@@ -47,8 +43,23 @@
   hardware.amdgpu.overdrive.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams =
-    [ "pci=realloc" "rebar=1" "amdgpu.ppfeaturemask=0xffffffff" ];
+  boot.kernelParams = [
+    "pci=realloc"
+    "rebar=1"
+    "amdgpu.ppfeaturemask=0xffffffff"
+    "transparent_hugepage=madvise"
+  ];
+
+  boot.kernel.sysctl = {
+    "vm.vfs_cache_pressure" = 30;
+    "vm.dirty_ratio" = 20;
+    "vm.dirty_background_ratio" = 10;
+    "vm.dirty_writeback_centisecs" = 3000;
+    "vm.dirty_expire_centisecs" = 6000;
+  };
+
+  systemd.tmpfiles.rules =
+    [ "w /sys/kernel/mm/transparent_hugepage/shmem_enabled - - - - advise" ];
 
   console = {
     packages = with pkgs; [ terminus_font ];
@@ -94,7 +105,9 @@
   users.users.shiba = {
     isNormalUser = true;
     password = "123";
-    extraGroups = [ "wheel" ];
+    extraGroups =
+      [ "wheel" "gamemode" "input" ]; # https://wiki.nixos.org/wiki/GameMode
+
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };
@@ -108,7 +121,7 @@
   };
 
   programs.steam.enable = true;
-  programs.gamescope.enable = true;
+  # programs.gamescope.enable = true;
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   services.greetd = {
@@ -133,9 +146,6 @@
     };
   };
 
-  security.sudo-rs.enable = true;
-  security.sudo.enable = false;
-
   programs.ssh = {
     extraConfig = ''
       AddKeysToAgent yes
@@ -150,7 +160,12 @@
 
   # programs.fish.enable = true; # Breaks hm
 
-  environment.systemPackages = with pkgs; [ uutils-coreutils-noprefix ];
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
+  environment.systemPackages = with pkgs; [ distrobox ];
 
   services.lact.enable = true;
 

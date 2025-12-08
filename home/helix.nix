@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   programs.helix = {
@@ -13,8 +16,14 @@
           C-left = "move_prev_word_start";
           C-backspace = "delete_word_backward";
           C-r = "redo";
-          p = [ "paste_clipboard_after" "collapse_selection" ];
-          P = [ "paste_clipboard_before" "collapse_selection" ];
+          p = [
+            "paste_clipboard_after"
+            "collapse_selection"
+          ];
+          P = [
+            "paste_clipboard_before"
+            "collapse_selection"
+          ];
           Y = [
             "extend_to_line_end"
             "yank_main_selection_to_clipboard"
@@ -68,8 +77,15 @@
             "jump_backward"
             "extend_to_line_bounds"
           ];
-          d = [ "yank_main_selection_to_clipboard" "delete_selection" ];
-          esc = [ "collapse_selection" "keep_primary_selection" "normal_mode" ];
+          d = [
+            "yank_main_selection_to_clipboard"
+            "delete_selection"
+          ];
+          esc = [
+            "collapse_selection"
+            "keep_primary_selection"
+            "normal_mode"
+          ];
         };
 
         insert = {
@@ -97,15 +113,21 @@
         display-messages = true;
       };
 
-      editor = { line-number = "relative"; };
+      editor = {
+        line-number = "relative";
+      };
     };
 
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-    }];
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+      }
+    ];
 
-    extraPackages = with pkgs; [ nil nixd ];
+    extraPackages = with pkgs; [
+      nil
+      nixd
+    ];
   };
 }

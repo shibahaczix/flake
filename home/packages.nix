@@ -1,11 +1,14 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
-    rtorrent
+    # rtorrent
     piper
     (discord-canary.override {
-      withOpenASAR = true;
+      # withOpenASAR = true;
       withVencord = true;
     })
     nautilus
@@ -19,15 +22,16 @@
     conceal
     file-roller
     gnome-text-editor
-    adwsteamgtk
+    # adwsteamgtk
     nvtopPackages.amd
     mangohud
     mangojuice
     # kdePackages.kdenlive
     qemu
     #davinci-resolve
-    blender
+    # blender
     (bottles.override { removeWarningPopup = true; })
+    easyeffects
   ];
 
   xdg.mimeApps.enable = true;
@@ -37,15 +41,17 @@
       name = "IntelliJ IDEA CE (Wayland)";
       icon = "idea-community";
       exec = "idea-community -Dawt.toolkit.name=WLToolkit";
-      categories = [ "Development" "IDE" ];
+      categories = [
+        "Development"
+        "IDE"
+      ];
       terminal = false;
     };
 
     "discord-canary" = {
       name = "Discord Canary (Wayland)";
       icon = "discord-canary";
-      exec =
-        "env NIXOS_OZONE_WL=1 discordcanary --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy";
+      exec = "env NIXOS_OZONE_WL=1 discordcanary --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --enable-features=UseOzonePlatform --ozone-platform=wayland";
       categories = [ "" ];
       terminal = false;
     };

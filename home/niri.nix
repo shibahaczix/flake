@@ -1,4 +1,10 @@
-{ pkgs, config, inputs, lib, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -18,13 +24,15 @@
   programs.niri = {
     package = pkgs.niri-unstable;
     settings = {
-      spawn-at-startup = [{
-        command = [
-          "swaybg"
-          "--image"
-          "/home/shiba/flake/home/wallpapers/wallpaper.png"
-        ];
-      }];
+      spawn-at-startup = [
+        {
+          command = [
+            "swaybg"
+            "--image"
+            "/home/shiba/flake/home/wallpapers/wallpaper.png"
+          ];
+        }
+      ];
       outputs = {
         "DP-2" = {
           variable-refresh-rate = true;
@@ -38,8 +46,14 @@
       };
 
       input = {
-        mouse = { accel-profile = "flat"; };
-        keyboard = { xkb = { layout = "pl"; }; };
+        mouse = {
+          accel-profile = "flat";
+        };
+        keyboard = {
+          xkb = {
+            layout = "pl";
+          };
+        };
       };
 
       hotkey-overlay.skip-at-startup = true;
@@ -117,7 +131,7 @@
 
         }
         {
-          matches = [{ app-id = "^kitty$"; }];
+          matches = [ { app-id = "^kitty$"; } ];
 
           default-column-width.proportion = 0.5;
         }

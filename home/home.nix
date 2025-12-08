@@ -1,4 +1,7 @@
-{ nixosConfig, ... }:
+{
+  nixosConfig,
+  ...
+}:
 
 {
   home.username = "shiba";
