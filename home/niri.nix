@@ -135,6 +135,11 @@
 
           default-column-width.proportion = 0.5;
         }
+        {
+          matches = [ { app-id = "^zen-beta$"; } ];
+
+          block-out-from = "screencast";
+        }
       ];
       layout = {
         gaps = 10;

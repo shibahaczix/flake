@@ -8,7 +8,7 @@
     # rtorrent
     piper
     (discord-canary.override {
-      # withOpenASAR = true;
+      withOpenASAR = true;
       withVencord = true;
     })
     nautilus
@@ -16,7 +16,7 @@
     gimp
     losslesscut-bin
     protonplus
-    #jetbrains.idea-community
+    # jetbrains.idea-community
     pavucontrol
     vlc
     conceal
@@ -28,8 +28,9 @@
     mangojuice
     # kdePackages.kdenlive
     qemu
-    #davinci-resolve
+    # davinci-resolve
     # blender
+    adwsteamgtk
     (bottles.override { removeWarningPopup = true; })
     easyeffects
   ];

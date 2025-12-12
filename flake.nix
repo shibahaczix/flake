@@ -21,21 +21,23 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./nixos/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.shiba = import ./home/home.nix;
-            extraSpecialArgs = { inherit inputs; };
-          };
-        }
-      ];
+  outputs =
+    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.shiba = import ./home/home.nix;
+              extraSpecialArgs = { inherit inputs; };
+            };
+          }
+        ];
+      };
     };
-  };
 }
