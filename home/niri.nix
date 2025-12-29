@@ -12,6 +12,7 @@
     wlr-randr
     vulkanPackages_latest.vulkan-tools
     clinfo
+    wayland-utils
     swaybg
     xwayland-satellite-unstable
   ];
@@ -34,9 +35,10 @@
         }
       ];
       outputs = {
-        "DP-2" = {
+        "DP-1" = {
           variable-refresh-rate = true;
-          # allow-tearing not yet implemented https://github.com/YaLTeR/niri/issues/844
+          # explicit sync https://github.com/YaLTeR/niri/pull/1449
+          # tearing https://github.com/YaLTeR/niri/issues/844
           mode = {
             width = 1920;
             height = 1080;
@@ -62,22 +64,19 @@
         "Mod+Shift+Delete".action = show-hotkey-overlay;
         "Mod+Return".action.spawn = "${lib.getExe pkgs.kitty}";
         "Mod+Space".action.spawn = "${lib.getExe pkgs.fuzzel}";
+
         "Mod+C".action.screenshot = [ ];
         "Mod+Shift+C".action.screenshot-window = [ ];
+
         "Mod+V".action = toggle-window-floating;
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+X".action = open-overview;
         "Mod+Shift+F".action = fullscreen-window;
-        "Mod+S".action = set-column-width "50%";
-        "Mod+Minus".action = set-column-width "-10%";
-        "Mod+Equal".action = set-column-width "+10%";
-        "Mod+Shift+Minus".action = set-window-height "-10%";
-        "Mod+Shift+Equal".action = set-window-height "+10%";
+
         "Mod+WheelScrollDown".action = focus-column-right;
         "Mod+WheelScrollUp".action = focus-column-left;
-        "Mod+Shift+WheelScrollDown".action = move-column-right;
-        "Mod+Shift+WheelScrollUp".action = move-column-left;
+
         "Mod+1".action = focus-workspace 1;
         "Mod+2".action = focus-workspace 2;
         "Mod+3".action = focus-workspace 3;
@@ -87,20 +86,6 @@
         "Mod+7".action = focus-workspace 7;
         "Mod+8".action = focus-workspace 8;
         "Mod+9".action = focus-workspace 9;
-
-        "Mod+H".action = focus-column-left;
-        "Mod+L".action = focus-column-right;
-        "Mod+J".action = focus-window-or-workspace-down;
-        "Mod+K".action = focus-window-or-workspace-up;
-        "Mod+Left".action = focus-column-left;
-        "Mod+Right".action = focus-column-right;
-        "Mod+Down".action = focus-workspace-down;
-        "Mod+Up".action = focus-workspace-up;
-
-        "Mod+Shift+H".action = move-column-left;
-        "Mod+Shift+L".action = move-column-right;
-        "Mod+Shift+K".action = move-column-to-workspace-up;
-        "Mod+Shift+J".action = move-column-to-workspace-down;
       };
 
       prefer-no-csd = true;
@@ -108,15 +93,6 @@
       window-rules = [
         {
           draw-border-with-background = false;
-
-          # geometry-corner-radius = let r = 11.5;
-          # in {
-          #   top-left = r;
-          #   top-right = r;
-          #   bottom-left = r;
-          #   bottom-right = r;
-          # };
-          # clip-to-geometry = true;
 
           default-column-width.proportion = 1.0;
 
@@ -158,7 +134,6 @@
     settings = {
       font = "JetBrainsMono NF 10";
       border-size = 2;
-      # border-radius = 5;
       border-color = "#b9aedaff";
       background-color = "#11111bff";
     };
@@ -181,14 +156,4 @@
       border.width = 2;
     };
   };
-
-  # I can just use my displays color settings
-  # services.gammastep = {
-  #   enable = true;
-  #   provider = "manual";
-  #   latitude = 52.2;
-  #   longitude = 18.2;
-  #   temperature.day = 4000;
-  #   temperature.night = 4000;
-  # };
 }

@@ -22,7 +22,6 @@
 
       confirm_os_window_close = 0;
       cursor_trail = 1;
-      # background_blur = 5;
 
       background_opacity = "1.0";
       window_border_width = "0px";

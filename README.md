@@ -4,3 +4,4 @@ Generally, I prefer to keep as much of my configuration in Home Manager as possi
 Inspiration:
  - https://github.com/WillPower3309/nixos-config
  - https://github.com/Awan/nix
+ - https://gitlab.com/theblackdon/black-don-os

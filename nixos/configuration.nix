@@ -10,6 +10,9 @@
   nix.package = pkgs.nixVersions.latest;
   nix = {
     settings = {
+      download-buffer-size = 250000000;
+      auto-optimise-store = true;
+
       trusted-users = [ "shiba" ];
       substituters = [
         "https://nix-community.cachix.org"
@@ -32,13 +35,15 @@
 
   boot.loader.limine.enable = true;
   boot.loader.limine.efiSupport = true;
-  boot.loader.limine.style.wallpapers = [ (builtins.toString ./nixos.png) ];
+  boot.loader.limine.style.wallpapers = [ (toString ./nixos.png) ];
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "ZEN4"; };
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto-znver4;
 
   powerManagement.cpuFreqGovernor = "schedutil";
 
+  hardware.amdgpu.overdrive.enable = true;
   hardware.amdgpu.initrd.enable = true;
+
   boot.initrd.systemd.enable = true;
 
   chaotic.mesa-git.enable = true;
@@ -46,12 +51,10 @@
     rocmPackages.clr.icd
     ocl-icd
 
-    # THIS IS VERY IMPORTANT IT FIXES PERFORMANCE ISSUES WITH CS2
     vulkanPackages_latest.vulkan-loader
     vulkanPackages_latest.vulkan-validation-layers
     vulkanPackages_latest.vulkan-extension-layer
   ];
-  hardware.amdgpu.overdrive.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
@@ -59,9 +62,13 @@
     "rebar=1"
     "amdgpu.ppfeaturemask=0xffffffff"
     "transparent_hugepage=madvise"
+    "nowatchdog"
+    "nohz_full=1"
+    "mitigations=auto"
   ];
 
   boot.kernel.sysctl = {
+    "vm.max_map_count" = 2147483642;
     "vm.vfs_cache_pressure" = 30;
     "vm.dirty_ratio" = 20;
     "vm.dirty_background_ratio" = 10;
@@ -115,9 +122,7 @@
     password = "123";
     extraGroups = [
       "wheel"
-      "gamemode"
-      "input"
-    ]; # https://wiki.nixos.org/wiki/GameMode
+    ];
 
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
@@ -132,7 +137,6 @@
   };
 
   programs.steam.enable = true;
-  # programs.gamescope.enable = true;
 
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   services.greetd = {
@@ -169,22 +173,11 @@
     package = pkgs.niri-unstable;
   };
 
-  # programs.fish.enable = true; # Breaks hm
-
-  # virtualisation.podman = {
-  #   enable = true;
-  #   dockerCompat = true;
-  # };
-
-  # environment.systemPackages = with pkgs; [ distrobox ];
-
   services.lact.enable = true;
 
   services.ratbagd.enable = true;
 
   programs.gamemode.enable = true;
-
-  # services.flatpak.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 

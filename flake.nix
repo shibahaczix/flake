@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      url = "github:lonerOrz/nyx-loner";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {

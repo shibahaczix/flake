@@ -8,6 +8,7 @@
   home.homeDirectory = "/home/shiba";
 
   home.stateVersion = nixosConfig.system.nixos.release;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -25,9 +26,6 @@
     ./helix.nix
     ./prismlauncher.nix
   ];
-
-  # Symlink example
-  # home.file.".zshrc".source = ./zshrc;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
