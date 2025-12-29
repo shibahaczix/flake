@@ -33,9 +33,8 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader.limine.enable = true;
-  boot.loader.limine.efiSupport = true;
-  boot.loader.limine.style.wallpapers = [ (toString ./nixos.png) ];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto-znver4;
 
@@ -56,7 +55,6 @@
     vulkanPackages_latest.vulkan-extension-layer
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "pci=realloc"
     "rebar=1"

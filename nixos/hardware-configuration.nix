@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -9,12 +8,12 @@
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
-    "ahci"
+    # "ahci" SATA
     "usbhid"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
-    "kvm-amd"
+    # "kvm-amd" VM
     "ntsync"
   ];
   boot.extraModulePackages = [ ];
@@ -41,7 +40,7 @@
     ];
   };
 
-  hardware.firmware = [ pkgs.linux-firmware ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
