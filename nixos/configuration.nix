@@ -159,12 +159,12 @@
     };
   };
 
-  programs.ssh = {
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
-    # startAgent = true; conflict with gnome-keyring
-  };
+  # programs.ssh = {
+  #   extraConfig = ''
+  #     AddKeysToAgent yes
+  #   '';
+  #   # startAgent = true; conflict with gnome-keyring
+  # };
 
   programs.niri = {
     enable = true;
@@ -176,6 +176,8 @@
   services.ratbagd.enable = true;
 
   programs.gamemode.enable = true;
+
+  services.flatpak.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 

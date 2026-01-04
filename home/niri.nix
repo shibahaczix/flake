@@ -116,6 +116,12 @@
 
           block-out-from = "screencast";
         }
+        {
+          matches = [ { app-id = "^discord$"; } ];
+
+          block-out-from = "screencast";
+
+        }
       ];
       layout = {
         gaps = 10;

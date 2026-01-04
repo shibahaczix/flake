@@ -16,6 +16,7 @@
     gimp
     losslesscut-bin
     protonplus
+    protonup-qt
     # jetbrains.idea-community
     pavucontrol
     vlc
