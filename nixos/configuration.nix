@@ -134,8 +134,6 @@
     flake = "/home/shiba/flake";
   };
 
-  programs.steam.enable = true;
-
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   services.greetd = {
     enable = true;
@@ -145,6 +143,11 @@
         user = "shiba";
       };
     };
+  };
+
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
   };
 
   fonts = {
@@ -159,25 +162,13 @@
     };
   };
 
-  # programs.ssh = {
-  #   extraConfig = ''
-  #     AddKeysToAgent yes
-  #   '';
-  #   # startAgent = true; conflict with gnome-keyring
-  # };
-
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri-unstable;
-  };
-
   services.lact.enable = true;
 
   services.ratbagd.enable = true;
 
   programs.gamemode.enable = true;
 
-  services.flatpak.enable = true;
+  programs.steam.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
