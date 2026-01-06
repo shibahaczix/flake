@@ -8,12 +8,12 @@
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
-    # "ahci" SATA
+    "ahci"
     "usbhid"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
-    # "kvm-amd" VM
+    "kvm-amd"
     "ntsync"
   ];
   boot.extraModulePackages = [ ];

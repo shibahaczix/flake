@@ -73,6 +73,7 @@
         "Mod+F".action = maximize-column;
         "Mod+X".action = open-overview;
         "Mod+Shift+F".action = fullscreen-window;
+        "Mod+S".action = set-column-width "50%";
 
         "Mod+WheelScrollDown".action = focus-column-right;
         "Mod+WheelScrollUp".action = focus-column-left;

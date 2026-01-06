@@ -170,6 +170,8 @@
 
   programs.steam.enable = true;
 
+  services.flatpak.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = config.system.nixos.release;
