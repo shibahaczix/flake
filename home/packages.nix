@@ -32,6 +32,7 @@
     # blender
     adwsteamgtk
     easyeffects
+    protontricks
   ];
 
   xdg.mimeApps.enable = true;

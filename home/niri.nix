@@ -34,6 +34,7 @@
           ];
         }
       ];
+
       outputs = {
         "DP-1" = {
           variable-refresh-rate = true;

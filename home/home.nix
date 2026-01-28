@@ -23,7 +23,7 @@
     ./niri.nix
     ./shell.nix
     ./obs.nix
-    ./helix.nix
+    ./vim.nix
     ./prismlauncher.nix
   ];
 

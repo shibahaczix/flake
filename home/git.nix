@@ -23,7 +23,7 @@
         key = "~/.ssh/id_ed25519";
       };
 
-      extraConfig.core.editor = "hx";
+      extraConfig.core.editor = "nvim";
     };
   };
 }

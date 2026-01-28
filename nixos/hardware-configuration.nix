@@ -20,7 +20,7 @@
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/385d88a3-0fd4-47f4-ae55-474ef8e049b1";
-    fsType = "btrfs"; # Switch to BcacheFS in the future
+    fsType = "btrfs";
     options = [
       "noatime"
       "compress=no"

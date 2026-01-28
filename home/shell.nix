@@ -7,9 +7,19 @@
   home.shellAliases = {
     g = "git";
     fs = "fastfetch";
+    ls = "eza";
+    cat = "bat";
   };
 
   programs.zoxide.enable = true;
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "ansi";
+      style = "plain";
+    };
+  };
+  programs.eza.enable = true;
 
   programs.fish = {
     enable = true;
