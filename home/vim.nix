@@ -17,9 +17,9 @@
       # Telescope
       ripgrep
       nixd
+      nixfmt
       clang
       tree-sitter
-      nixfmt
     ];
 
     plugins = with pkgs.vimPlugins; [

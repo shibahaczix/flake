@@ -14,6 +14,7 @@ return {
 				},
 				zls = {},
 				ols = {},
+				clangd = {},
 			},
 		},
 	},

@@ -33,6 +33,7 @@
     adwsteamgtk
     easyeffects
     protontricks
+    (bottles.override { removeWarningPopup = true; })
   ];
 
   xdg.mimeApps.enable = true;
