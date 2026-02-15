@@ -153,6 +153,8 @@
             plugins: with plugins; [
               c
               lua
+              html
+              css
             ]
           )).dependencies;
       };

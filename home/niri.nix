@@ -113,17 +113,6 @@
 
           default-column-width.proportion = 0.5;
         }
-        {
-          matches = [ { app-id = "^zen-beta$"; } ];
-
-          block-out-from = "screencast";
-        }
-        {
-          matches = [ { app-id = "^discord$"; } ];
-
-          block-out-from = "screencast";
-
-        }
       ];
       layout = {
         gaps = 10;

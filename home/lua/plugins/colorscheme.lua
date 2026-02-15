@@ -1,14 +1,14 @@
 return {
 	{
-		"AlexvZyl/nordic.nvim",
-		lazy = false,
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 	},
 
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "nordic",
+			colorscheme = "catppuccin",
 		},
 	},
 }
