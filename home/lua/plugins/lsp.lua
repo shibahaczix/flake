@@ -19,6 +19,7 @@ return {
 				html = {},
 				cssls = {},
 				gdscript = {},
+				rust_analyzer = {},
 			},
 		},
 	},

@@ -51,7 +51,7 @@
     ocl-icd
 
     vulkanPackages_latest.vulkan-loader
-    vulkanPackages_latest.vulkan-validation-layers
+    # vulkanPackages_latest.vulkan-validation-layers
     vulkanPackages_latest.vulkan-extension-layer
   ];
 
@@ -168,7 +168,7 @@
 
   programs.gamemode.enable = true;
 
-  programs.steam.enable = true;
+  programs.steam.enable = true; # Maybe try https://github.com/SteamClientHomebrew/Millennium
 
   services.flatpak.enable = true;
 

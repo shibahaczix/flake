@@ -3,6 +3,7 @@
 }:
 
 {
+  # Switch to crabfetch
   programs.fastfetch = {
     enable = true;
     settings = {

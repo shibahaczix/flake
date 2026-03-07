@@ -25,9 +25,11 @@
     qemu
     # davinci-resolve
     # blender
+    ghidra
     adwsteamgtk
     easyeffects
     protontricks
+    gamescope_git
     (bottles.override { removeWarningPopup = true; })
   ];
 

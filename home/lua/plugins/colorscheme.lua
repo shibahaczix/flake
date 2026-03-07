@@ -1,14 +1,14 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"nickkadutskyi/jb.nvim",
+		name = "jb",
 		priority = 1000,
 	},
 
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "catppuccin",
+			colorscheme = "jb",
 		},
 	},
 }
